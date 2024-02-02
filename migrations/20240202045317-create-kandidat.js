@@ -9,6 +9,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      no_urut: {
+        type: Sequelize.STRING
+      },
       nama: {
         type: Sequelize.STRING
       },

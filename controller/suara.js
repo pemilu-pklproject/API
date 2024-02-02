@@ -1,6 +1,6 @@
 
-//insert relawan role
-const insertRelawanRole = async (req, res) => {
+//insert hasil suara
+const insertHasilSuara = async (req, res) => {
     try {
         res.json({
             status: true,
@@ -15,5 +15,5 @@ const insertRelawanRole = async (req, res) => {
 };
 
 module.exports = {
-    insertRelawanRole,
+    insertHasilSuara,
 };

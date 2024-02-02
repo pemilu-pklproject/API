@@ -1,21 +1,21 @@
 const express = require('express');
 const app = express();
-const routes = require("./config/routes")
-const bodyParser = require("body-parser")
-// const cors = require('cors');
-const PORT = 3000;
+const bodyParser = require('body-parser');
+const routes = require('./config/routes');
 
-app.use(bodyParser.json())
-// app.use(cors());
- 
-app.use(express.json());
- 
-app.post('/', function (req, res) {
-    console.log(req.body.name)
-    res.end();
-})
- 
+const PORT = 5000;
+
+app.use(bodyParser.json());
+
+// Load routes into the app
+routes(app);
+
+// Define a default route for unmatched paths
+app.use((req, res) => {
+    res.status(404).send('Failed');
+});
+
 app.listen(PORT, function (err) {
     if (err) console.log(err);
-    console.log("Server listening on PORT", PORT);
+    console.log('Server listening on PORT', PORT);
 });

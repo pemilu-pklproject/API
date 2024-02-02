@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class TPS extends Model {
+  class Data_TPS extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  TPS.init({
+  Data_TPS.init({
     dapil: DataTypes.STRING,
     nomor: DataTypes.INTEGER,
     id_saksi: DataTypes.INTEGER
@@ -23,5 +23,5 @@ module.exports = (sequelize, DataTypes) => {
     freezeTableName: true,
     modelName: 'TPS',
   });
-  return TPS;
+  return Data_TPS;
 };

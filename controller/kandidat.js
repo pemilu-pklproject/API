@@ -1,19 +1,33 @@
+const { Kandidats } = require("../models")
 
 //insert kandidat
-const insertKandidat = async (req, res) => {
-    try {
-        res.json({
-            status: true,
-            statusCode: 200,
-            data: req.body
-        });
-        console.log("berhasil");
-    } catch (err) {
-        console.error(err);
-        res.status(500).send("Failed");
-    }
+const insertKandidat =  (req, res) => {
+    Kandidats
+        .create(req.body)
+        .then(()=>{ res.json({ status:true, message: "data berhasil input"})})
+        .catch(err=>{
+            console.log(err)
+            res.statusCode=500
+            res.send("server error")
+        })
 };
 
+//getAllKandidat
+const getAllKandidat = async (req,res) =>{
+    Kandidats
+        .findAll()
+        .then((datas)=>{
+            res.status=200
+            res.json(datas)
+        })
+        .catch(err =>{
+            console.log(err)
+            res.status=500
+            res.send("server error")
+        })
+}
+
 module.exports = {
-    insertKandidat
+    insertKandidat,
+    getAllKandidat
 }

@@ -14,6 +14,10 @@ const {
     insertTps 
 } = require("../controller/tps");
 
+const { 
+    insertRelawanRole 
+} = require("../controller/relawan_role");
+
 
 module.exports = (app) =>{
     //relawan
@@ -26,6 +30,9 @@ module.exports = (app) =>{
     app.post('/pemilih', insertPemilih)
 
     //tps
-    app.post('/tps',insertTps)
+    app.post('/tps', insertTps)
+
+    //relawan role
+    app.post('/relawan-role', insertRelawanRole)
 };
 

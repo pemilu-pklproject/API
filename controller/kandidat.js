@@ -1,6 +1,6 @@
 
-//insert relawan
-const insertRelawan = async (req, res) => {
+//insert kandidat
+const insertKandidat = async (req, res) => {
     try {
         res.json({
             status: true,
@@ -15,5 +15,5 @@ const insertRelawan = async (req, res) => {
 };
 
 module.exports = {
-    insertRelawan,
-};
+    insertKandidat
+}

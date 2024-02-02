@@ -7,10 +7,8 @@ const PORT = 5000;
 
 app.use(bodyParser.json());
 
-// Load routes into the app
 routes(app);
 
-// Define a default route for unmatched paths
 app.use((req, res) => {
     res.status(404).send('Failed');
 });

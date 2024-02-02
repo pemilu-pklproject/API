@@ -1,5 +1,7 @@
 const { 
-    insertKandidat 
+    insertKandidat,
+    getKandidatById,
+    getAllKandidat 
 } = require("../controller/kandidat")
 
 const { 
@@ -29,6 +31,8 @@ module.exports = (app) =>{
 
     //kandidat
     app.post('/kandidat', insertKandidat)
+    app.get('/kandidat:id', getKandidatById)
+    app.get('/kandidat', getAllKandidat)
 
     //pemilih
     app.post('/pemilih', insertPemilih)

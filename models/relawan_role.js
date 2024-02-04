@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Data_Relawan_role.init({
+    id_relawan: DataTypes.INTEGER,
     role: DataTypes.STRING
   }, {
     sequelize,

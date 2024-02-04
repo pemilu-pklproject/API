@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   Data_TPS.init({
     dapil: DataTypes.STRING,
     nomor: DataTypes.INTEGER,
-    id_saksi: DataTypes.INTEGER
+    id_saksi: DataTypes.INTEGER,
+    id_kandidat: DataTypes.INTEGER
   }, {
     sequelize,
     timestamps: false,

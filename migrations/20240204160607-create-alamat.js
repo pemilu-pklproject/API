@@ -2,37 +2,40 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Pemilih', {
+    await queryInterface.createTable('Alamat', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nama: {
+      provinsi: {
         type: Sequelize.STRING
       },
-      nik: {
+      kabupaten: {
         type: Sequelize.STRING
       },
-      id_kandidat: {
-        type: Sequelize.INTEGER
-      },
-      password: {
+      kota: {
         type: Sequelize.STRING
       },
-      no_wa: {
+      kecamatan: {
         type: Sequelize.STRING
       },
-      id_relawan: {
-        type: Sequelize.INTEGER
+      kelurahan: {
+        type: Sequelize.STRING
       },
-      id_tps: {
-        type: Sequelize.INTEGER
+      desa: {
+        type: Sequelize.STRING
+      },
+      lingkungan: {
+        type: Sequelize.STRING
+      },
+      dusun: {
+        type: Sequelize.STRING
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Pemilih');
+    await queryInterface.dropTable('Alamat');
   }
 };

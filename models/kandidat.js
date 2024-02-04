@@ -14,11 +14,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Data_Kandidat.init({
-    no_urut: DataTypes.STRING,
     nama: DataTypes.STRING,
     nik: DataTypes.STRING,
     email: DataTypes.STRING,
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
+    partai: DataTypes.STRING,
+    dapil: DataTypes.STRING,
+    no_urut: DataTypes.INTEGER
   }, {
     sequelize,
     timestamps: false,

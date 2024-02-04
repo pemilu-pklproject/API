@@ -2,19 +2,28 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Relawan_role', {
+    await queryInterface.createTable('TPS', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      role: {
+      dapil: {
         type: Sequelize.STRING
+      },
+      nomor: {
+        type: Sequelize.INTEGER
+      },
+      id_saksi: {
+        type: Sequelize.INTEGER
+      },
+      id_kandidat: {
+        type: Sequelize.INTEGER
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Relawan_role');
+    await queryInterface.dropTable('TPS');
   }
 };

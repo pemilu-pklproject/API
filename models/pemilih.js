@@ -15,12 +15,13 @@ module.exports = (sequelize, DataTypes) => {
   }
   Data_Pemilih.init({
     nama: DataTypes.STRING,
+    email: DataTypes.STRING,
     nik: DataTypes.STRING,
     id_kandidat: DataTypes.INTEGER,
-    password: DataTypes.STRING,
     no_wa: DataTypes.STRING,
     id_relawan: DataTypes.INTEGER,
-    id_tps: DataTypes.INTEGER
+    id_tps: DataTypes.INTEGER,
+    id_alamat: DataTypes.INTEGER
   }, {
     sequelize,
     timestamps: false,

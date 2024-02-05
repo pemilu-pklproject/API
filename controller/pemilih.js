@@ -70,8 +70,7 @@ const deletePemilih = async (req, res) => {
 //delete all pemilih
 const deleteAllPemilih = async (req, res) => {
     Pemilih
-    .findAll()
-    .destroy(datas)
+    .destroy({ where:{}, truncate:true})
     .then(() => res.json({ status: true, message: 'delete data success' }))
     .catch(err => {
         console.log(err)

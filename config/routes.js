@@ -1,7 +1,10 @@
 const { 
     insertKandidat,
     getKandidatById,
-    getAllKandidat 
+    getAllKandidat, 
+    updateKandidat,
+    deleteKandidat,
+    deletAllKandidat,
 } = require("../controller/kandidat")
 
 const { 
@@ -27,23 +30,26 @@ const {
 
 module.exports = (app) =>{
     //relawan
-    app.post('/relawan', insertRelawan)
+    app.post(`/relawan`, insertRelawan)
 
     //kandidat
-    app.post('/kandidat', insertKandidat)
-    app.get('/kandidat:id', getKandidatById)
-    app.get('/kandidat', getAllKandidat)
+    app.post(`/kandidat/add`, insertKandidat)
+    app.get(`/kandidat/:id`, getKandidatById)
+    app.get(`/kandidat`, getAllKandidat)
+    app.put(`/kandidat/update/:id`, updateKandidat)
+    app.delete(`/kandidat/:id`, deleteKandidat)
+    app.delete(`/kandidat/delete`, deletAllKandidat)
 
     //pemilih
-    app.post('/pemilih', insertPemilih)
+    app.post(`/pemilih`, insertPemilih)
 
     //tps
-    app.post('/tps', insertTps)
+    app.post(`/tps`, insertTps)
 
     //relawan role
-    app.post('/relawan-role', insertRelawanRole)
+    app.post(`/relawan-role`, insertRelawanRole)
 
     //hasil suara
-    app.post('/hasil-suara', insertHasilSuara)
+    app.post(`/hasil-suara`, insertHasilSuara)
 };
 

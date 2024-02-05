@@ -4,7 +4,7 @@ const { Kandidat } = require("../models")
 const insertKandidat = async (req, res) => {
     Kandidat
         .create(req.body)
-        .then(()=>{ res.json({ status:true, message: "data berhasil input"})})
+        .then(()=>{ res.json({ status:true, message: "data input success"})})
         .catch(err=>{
             console.log(err)
             res.statusCode=500
@@ -17,7 +17,7 @@ const getAllKandidat = async (req,res) =>{
     Kandidat
         .findAll()
         .then((datas)=>{
-            res.status=200
+            res.status=true
             res.json(datas)
         })
         .catch(err =>{
@@ -27,6 +27,7 @@ const getAllKandidat = async (req,res) =>{
         })
 }
 
+//get kandidat by Id
 const getKandidatById = async (req, res) => {
     Kandidat
         .findAll({ where: { id: req.params.id } })
@@ -42,9 +43,49 @@ const getKandidatById = async (req, res) => {
         })
 };
 
+//update kandidat
+const updateKandidat = async (req, res) => {
+    Kandidat
+    .update(req.body, { where: { id: req.params.id } })
+    .then(() => res.json({ status: true, message: 'data update success' }))
+    .catch(err => {
+        console.log(err)
+        res.statusCode = 500
+        res.send("Server Error")
+    })
+  };
+
+//delete kandidat
+const deleteKandidat = async (req, res) => {
+    Kandidat
+    .destroy({ where: { id: req.params.id } })
+    .then(() => res.json({ status: true, message: 'delete data success' }))
+    .catch(err => {
+        console.log(err)
+        res.statusCode = 500
+        res.send("Server Error")
+    })
+  };
+
+//delete all kandidat
+const deletAllKandidat = async (req, res) => {
+    Kandidat
+    .findAll()
+    .destroy(datas)
+    .then(() => res.json({ status: true, message: 'delete data success' }))
+    .catch(err => {
+        console.log(err)
+        res.statusCode = 500
+        res.send("Server Error")
+    })
+  };
+
 
 module.exports = {
     insertKandidat,
     getAllKandidat,
-    getKandidatById
+    getKandidatById,
+    updateKandidat,
+    deleteKandidat,
+    deletAllKandidat
 }

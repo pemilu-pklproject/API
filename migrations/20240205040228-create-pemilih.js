@@ -32,9 +32,6 @@ module.exports = {
       },
       id_tps: {
         type: Sequelize.INTEGER
-      },
-      id_alamat: {
-        type: Sequelize.INTEGER
       }
     });
   },

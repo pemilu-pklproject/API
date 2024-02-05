@@ -21,12 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     no_hp: DataTypes.STRING,
     jenis_kelamin: DataTypes.ENUM,
     id_relawan: DataTypes.INTEGER,
-    id_tps: DataTypes.INTEGER,
-    id_alamat: DataTypes.INTEGER
+    id_tps: DataTypes.INTEGER
   }, {
     sequelize,
-    timestamps: false,
-    freezeTableName: true,
+    timestamps:false,
+    freezeTableName:true,
     modelName: 'Pemilih',
   });
   return Data_Pemilih;

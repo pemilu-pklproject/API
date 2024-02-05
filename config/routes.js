@@ -12,7 +12,12 @@ const {
 } = require("../controller/relawan")
 
 const { 
-    insertPemilih 
+    insertPemilih, 
+    getPemilihById, 
+    getAllPemilih, 
+    updatePemilih,
+    deletePemilih,
+    deleteAllPemilih
 } = require("../controller/pemilih");
 
 const { 
@@ -37,12 +42,16 @@ module.exports = (app) =>{
     app.get(`/kandidat/:id`, getKandidatById)
     app.get(`/kandidat`, getAllKandidat)
     app.put(`/kandidat/update/:id`, updateKandidat)
-    app.delete(`/kandidat/:id`, deleteKandidat)
+    app.delete(`/kandidat/delete/:id`, deleteKandidat)
     app.delete(`/kandidat/delete`, deletAllKandidat)
 
     //pemilih
-    app.post(`/pemilih`, insertPemilih)
-
+    app.post(`/pemilih/add`, insertPemilih)
+    app.get(`/pemilih/:id`, getPemilihById)
+    app.get(`/pemilih`, getAllPemilih)
+    app.put(`/pemilih/update/:id`, updatePemilih)
+    app.delete(`/pemilih/delete/:id`, deletePemilih)
+    app.delete(`/pemilih/delete`, deleteAllPemilih)
     //tps
     app.post(`/tps`, insertTps)
 

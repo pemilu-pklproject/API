@@ -70,8 +70,7 @@ const deleteKandidat = async (req, res) => {
 //delete all kandidat
 const deletAllKandidat = async (req, res) => {
     Kandidat
-    .findAll()
-    .destroy(datas)
+    .destroy({ where:{}, truncate:true })
     .then(() => res.json({ status: true, message: 'delete data success' }))
     .catch(err => {
         console.log(err)

@@ -43,7 +43,6 @@ const {
     deletAllHasilSuara
 } = require("../controller/suara");
 
-
 module.exports = (app) =>{
     //relawan
     app.post(`/relawan/add`, insertRelawan)

@@ -35,7 +35,12 @@ const {
 } = require("../controller/tps");
 
 const { 
-    insertHasilSuara 
+    insertHasilSuara, 
+    getHasilSuaraById, 
+    getAllHasilSuara,
+    updateHasilSuara,
+    deleteHasilSuara,
+    deletAllHasilSuara
 } = require("../controller/suara");
 
 
@@ -74,6 +79,11 @@ module.exports = (app) =>{
 
 
     //hasil suara
-    app.post(`/hasil-suara`, insertHasilSuara)
+    app.post(`/hasil-suara/add`, insertHasilSuara)
+    app.get(`/hasil-suara/:id`, getHasilSuaraById)
+    app.get(`/hasil-suara`, getAllHasilSuara)
+    app.put(`/hasil-suara/update/:id`, updateHasilSuara)
+    app.delete(`/hasil-suara/delete/:id`, deleteHasilSuara)
+    app.delete(`/hasil-suara/delete`, deletAllHasilSuara)
 };
 

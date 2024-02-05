@@ -21,7 +21,10 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
-      no_wa: {
+      jenis_kelamin: {
+        type: Sequelize.ENUM("pria","wanita")
+      },
+      no_hp: {
         type: Sequelize.STRING
       },
       id_kandidat: {

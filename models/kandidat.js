@@ -18,9 +18,11 @@ module.exports = (sequelize, DataTypes) => {
     nik: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
+    jenis_kelamin: DataTypes.ENUM,
     partai: DataTypes.STRING,
     dapil: DataTypes.STRING,
-    no_urut: DataTypes.INTEGER
+    no_urut: DataTypes.INTEGER,
+    id_jabatan: DataTypes.INTEGER
   }, {
     sequelize,
     timestamps: false,

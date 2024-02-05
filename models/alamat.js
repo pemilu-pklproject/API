@@ -14,14 +14,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Data_Alamat.init({
-    provinsi: DataTypes.STRING,
-    kabupaten: DataTypes.STRING,
-    kota: DataTypes.STRING,
+    alamat: DataTypes.STRING,
+    rt_rw: DataTypes.STRING,
+    kel_desa: DataTypes.STRING,
     kecamatan: DataTypes.STRING,
-    kelurahan: DataTypes.STRING,
-    desa: DataTypes.STRING,
-    lingkungan: DataTypes.STRING,
-    dusun: DataTypes.STRING
+    kab_kota: DataTypes.STRING,
+    provinsi: DataTypes.STRING,
+    id_pemilih: DataTypes.INTEGER
   }, {
     sequelize,
     timestamps: false,

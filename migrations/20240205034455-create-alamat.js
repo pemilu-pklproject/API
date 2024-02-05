@@ -9,29 +9,26 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      provinsi: {
+      alamat: {
         type: Sequelize.STRING
       },
-      kabupaten: {
+      rt_rw: {
         type: Sequelize.STRING
       },
-      kota: {
+      kel_desa: {
         type: Sequelize.STRING
       },
       kecamatan: {
         type: Sequelize.STRING
       },
-      kelurahan: {
+      kab_kota: {
         type: Sequelize.STRING
       },
-      desa: {
+      provinsi: {
         type: Sequelize.STRING
       },
-      lingkungan: {
-        type: Sequelize.STRING
-      },
-      dusun: {
-        type: Sequelize.STRING
+      id_pemilih: {
+        type: Sequelize.INTEGER
       }
     });
   },

@@ -33,7 +33,7 @@ const getPemilihById = async (req, res) => {
         .findAll({ where: { id: req.params.id } })
         .then((data) => {
             if(data.length == 0) {
-                return res.status(404).json({status: false, message: "id kandidat not found"})}
+                return res.status(404).json({status: false, message: "id pemilih not found"})}
             res.json(data)
         })
         .catch(err => {

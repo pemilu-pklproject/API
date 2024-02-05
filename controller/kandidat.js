@@ -1,7 +1,7 @@
 const { Kandidat } = require("../models")
 
 //insert kandidat
-const insertKandidat =  (req, res) => {
+const insertKandidat = async (req, res) => {
     Kandidat
         .create(req.body)
         .then(()=>{ res.json({ status:true, message: "data berhasil input"})})
@@ -27,7 +27,7 @@ const getAllKandidat = async (req,res) =>{
         })
 }
 
-const getKandidatById = (req, res) => {
+const getKandidatById = async (req, res) => {
     Kandidat
         .findAll({ where: { id: req.params.id } })
         .then((data) => {

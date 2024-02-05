@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     nik: DataTypes.STRING,
     id_kandidat: DataTypes.INTEGER,
     no_hp: DataTypes.STRING,
-    jenis_kelamin: DataTypes.ENUM,
+    jenis_kelamin: DataTypes.ENUM("pria","wanita"),
     id_relawan: DataTypes.INTEGER,
     id_tps: DataTypes.INTEGER
   }, {

@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     nik: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    jenis_kelamin: DataTypes.ENUM,
+    jenis_kelamin: DataTypes.ENUM("pria","wanita"),
     no_hp: DataTypes.STRING,
     id_kandidat: DataTypes.INTEGER
   }, {

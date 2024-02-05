@@ -26,7 +26,12 @@ const {
 } = require("../controller/pemilih");
 
 const { 
-    insertTps 
+    insertTPS, 
+    getTPSById, 
+    getAllTPS, 
+    updateTPS, 
+    deleteTPS, 
+    deleteAllTPS 
 } = require("../controller/tps");
 
 const { 
@@ -60,7 +65,12 @@ module.exports = (app) =>{
     app.delete(`/pemilih/delete`, deleteAllPemilih)
 
     //tps
-    app.post(`/tps`, insertTps)
+    app.post(`/tps/add`, insertTPS)
+    app.get(`/tps/:id`, getTPSById)
+    app.get(`/tps`, getAllTPS)
+    app.put(`/tps/update/:id`, updateTPS)
+    app.delete(`/tps/delete/:id`, deleteTPS)
+    app.delete(`/tps/delete`, deleteAllTPS)
 
 
     //hasil suara

@@ -48,6 +48,13 @@ const {
     updateAlamat,
 } = require("../controller/alamat");
 
+const { 
+    authLogin, 
+    KandidatRegister, 
+    kandidatLogin
+} = require("../controller/auth");
+
+const gen_token = require('../helper/generate-token')
 
 module.exports = (app) =>{
     //relawan
@@ -95,5 +102,17 @@ module.exports = (app) =>{
     app.post(`/pemilih/alamat/add`, insertAlamat)
     app.put(`/pemilih/alamat/update/:id`, updateAlamat)
 
+    //login
+    app.post(`/admin/login`, authLogin)
+    app.post(`/login/kandidat`, kandidatLogin)
+    app.post(`/kandidat/regis`, KandidatRegister)
+
+    app.post(`/gen-access-token`, (req, res) => {
+        const { refresh_token } = req.body
+        gen_token(refresh_token, (err, acces_token) => {
+          if (err) return res.status(401).json({ status: false, msg: "Unauthorized" });
+          res.status(200).json({status: true, acces_token})
+        })
+      })
 };
 

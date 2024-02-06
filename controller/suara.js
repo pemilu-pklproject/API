@@ -1,4 +1,4 @@
-const { Hasil_suara } = require("../models")
+const { Hasil_suara } = require("../database/models")
 
 //insert HasilSuara
 const insertHasilSuara = async (req, res) => {

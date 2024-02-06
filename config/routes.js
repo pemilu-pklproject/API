@@ -43,6 +43,12 @@ const {
     deletAllHasilSuara
 } = require("../controller/suara");
 
+const { 
+    insertAlamat, 
+    updateAlamat,
+} = require("../controller/alamat");
+
+
 module.exports = (app) =>{
     //relawan
     app.post(`/relawan/add`, insertRelawan)
@@ -84,5 +90,10 @@ module.exports = (app) =>{
     app.put(`/hasil-suara/update/:id`, updateHasilSuara)
     app.delete(`/hasil-suara/delete/:id`, deleteHasilSuara)
     app.delete(`/hasil-suara/delete`, deletAllHasilSuara)
+
+    //alamat
+    app.post(`/pemilih/alamat/add`, insertAlamat)
+    app.put(`/pemilih/alamat/update/:id`, updateAlamat)
+
 };
 

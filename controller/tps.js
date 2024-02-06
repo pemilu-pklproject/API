@@ -1,4 +1,4 @@
-const { TPS } = require("../models")
+const { TPS } = require("../database/models")
 
 //insert TPS
 const insertTPS = async (req, res) => {

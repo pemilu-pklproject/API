@@ -1,4 +1,4 @@
-const { Pemilih } = require("../models")
+const { Pemilih } = require("../database/models")
 
 //insert pemilih
 const insertPemilih = async (req, res) => {

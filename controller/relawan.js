@@ -1,4 +1,4 @@
-const { Relawan } = require("../models")
+const { Relawan } = require("../database/models")
 
 //insert Relawan
 const insertRelawan = async (req, res) => {

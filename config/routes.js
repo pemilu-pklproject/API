@@ -52,8 +52,6 @@ const {
     authLogin, 
     KandidatRegister, 
     kandidatLogin,
-    AdminRegister,
-    RelawanRegis,
     RelawanLogin
 } = require("../controller/auth");
 
@@ -111,7 +109,6 @@ module.exports = (app) =>{
     app.post(`/login/relawan`, RelawanLogin)
     app.post(`/regis/kandidat`, KandidatRegister)
     // app.post(`/regis/admin`, AdminRegister)
-    app.post(`/regis/relawan`, RelawanRegis)
 
     app.post(`/gen-access-token`, (req, res) => {
         const { refresh_token } = req.body

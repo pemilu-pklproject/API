@@ -1,7 +1,11 @@
 const { Relawan } = require("../database/models")
+const { encrypt } = require('../helper/bcrypt');
 
 //insert Relawan
 const insertRelawan = async (req, res) => {
+    const { password } = req.body;
+    req.body.password = encrypt(password);
+
     Relawan
     .create(req.body)
     .then(()=>{ res.json({ status:true, message: "data input success"})})
@@ -45,6 +49,9 @@ const getRelawanById = async (req, res) => {
 
 //update Relawan
 const updateRelawan = async (req, res) => {
+    const { password } = req.body;
+    req.body.password = encrypt(password);
+    
     Relawan
     .update(req.body, { where: { id: req.params.id } })
     .then(() => res.json({ status: true, message: 'data update success' }))

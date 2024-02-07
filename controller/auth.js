@@ -119,27 +119,12 @@ const KandidatRegister =  (req, res) => {
     });
 }
 
-//regis relawan
-const RelawanRegis =  (req, res) => {
-    const { password } = req.body;
-    req.body.password = encrypt(password);
-
-    Relawan
-    .create(req.body)
-    .then(() => res.status(201).json({ status: true, msg: 'Registrasi berhasil' }))
-    .catch((err) => {
-        console.error(err);
-        res.statusCode = 500;
-        res.send('Server Error');
-    });
-}
 
 
 module.exports = {
     authLogin, 
     KandidatRegister, 
     kandidatLogin, 
-    // AdminRegister,
     RelawanLogin,
-    RelawanRegis
+    // AdminRegister,
 }

@@ -12,7 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.hasOne(models.TPS, {
         foreignKey: 'id_saksi',
-        sourceKey: 'id'
+        sourceKey: 'id',
+        scope: {
+          isSaksi: true
+        }
       });
     }
     

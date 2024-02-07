@@ -52,7 +52,9 @@ const {
     authLogin, 
     KandidatRegister, 
     kandidatLogin,
-    AdminRegister
+    AdminRegister,
+    RelawanRegis,
+    RelawanLogin
 } = require("../controller/auth");
 
 const gen_token = require('../helper/generate-token')
@@ -106,8 +108,10 @@ module.exports = (app) =>{
     //login
     app.post(`/login/admin`, authLogin)
     app.post(`/login/kandidat`, kandidatLogin)
-    app.post(`/kandidat/regis`, KandidatRegister)
-    app.post(`/admin/regis`, AdminRegister)
+    app.post(`/login/relawan`, RelawanLogin)
+    app.post(`/regis/kandidat`, KandidatRegister)
+    app.post(`/regis/admin`, AdminRegister)
+    app.post(`/regis/relawan`, RelawanRegis)
 
     app.post(`/gen-access-token`, (req, res) => {
         const { refresh_token } = req.body

@@ -17,9 +17,6 @@ module.exports = {
       },
       password: {
         type: Sequelize.STRING
-      },
-      id_kandidat: {
-        type: Sequelize.INTEGER
       }
     });
   },

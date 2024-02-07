@@ -1,5 +1,4 @@
 const { Super_admin, Kandidat, Relawan } = require('../database/models');
-const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
 const { decrypt, encrypt } = require('../helper/bcrypt');
 
@@ -43,9 +42,9 @@ const kandidatLogin = async (req, res) => {
                     return res.status(401).json({ status: false, msg: 'Password salah' })
                 };
 
-                const { id, email, nama } = data[0];
-                const access_token = jwt.sign({ id, email, nama }, process.env.ACCESS_TOKEN, { expiresIn: '600s' });
-                const refresh_token = jwt.sign({ id, email, nama }, process.env.REFRESH_TOKEN, { expiresIn: '90d' });
+                const { id, email, nama, nik } = data[0];
+                const access_token = jwt.sign({ id, email, nama, nik }, process.env.ACCESS_TOKEN, { expiresIn: '600s' });
+                const refresh_token = jwt.sign({ id, email, nama, nik }, process.env.REFRESH_TOKEN, { expiresIn: '90d' });
     
                 return res.json({status: true, access_token, refresh_token });
             });
@@ -61,7 +60,7 @@ const kandidatLogin = async (req, res) => {
 const KandidatRegister =  (req, res) => {
     const { password } = req.body;
     req.body.password = encrypt(password);
-    
+
     Kandidat
     .create(req.body)
     .then(() => res.status(201).json({ status: true, msg: 'Registrasi berhasil' }))

@@ -139,7 +139,7 @@ module.exports = {
     authLogin, 
     KandidatRegister, 
     kandidatLogin, 
-    AdminRegister,
+    // AdminRegister,
     RelawanLogin,
     RelawanRegis
 }

@@ -4,8 +4,8 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const routes = require('./config/routes');
+const PORT = process.env.APP_PORT || 5000
 
-const PORT = 5000;
 app.use(cors({origin: "*"}));
 
 app.use(bodyParser.json());

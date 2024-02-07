@@ -110,7 +110,7 @@ module.exports = (app) =>{
     app.post(`/login/kandidat`, kandidatLogin)
     app.post(`/login/relawan`, RelawanLogin)
     app.post(`/regis/kandidat`, KandidatRegister)
-    app.post(`/regis/admin`, AdminRegister)
+    // app.post(`/regis/admin`, AdminRegister)
     app.post(`/regis/relawan`, RelawanRegis)
 
     app.post(`/gen-access-token`, (req, res) => {

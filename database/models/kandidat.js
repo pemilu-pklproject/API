@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     partai: DataTypes.STRING,
     dapil: DataTypes.STRING,
     no_urut: DataTypes.INTEGER,
-    id_jabatan: DataTypes.INTEGER
+    id_jabatan: DataTypes.INTEGER,
+    id_admin: DataTypes.INTEGER
   }, {
     sequelize,
     timestamps: false,

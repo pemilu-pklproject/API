@@ -35,6 +35,9 @@ module.exports = {
       },
       id_jabatan: {
         type: Sequelize.INTEGER
+      },
+      id_admin: {
+        type: Sequelize.INTEGER
       }
     });
   },

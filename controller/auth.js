@@ -21,7 +21,7 @@ const authLogin = async (req, res) => {
                 const access_token = jwt.sign({ id, email, nama }, process.env.ACCESS_TOKEN, { expiresIn: '600s' });
                 const refresh_token = jwt.sign({ id, email, nama }, process.env.REFRESH_TOKEN, { expiresIn: '90d' });
     
-                return res.json({status: true, access_token, refresh_token });
+                return res.json({status: true, user: id, access_token, refresh_token });
             });
         })
         .catch(err => {
@@ -49,7 +49,7 @@ const kandidatLogin = async (req, res) => {
                 const access_token = jwt.sign({ id, email, nama, nik }, process.env.ACCESS_TOKEN, { expiresIn: '600s' });
                 const refresh_token = jwt.sign({ id, email, nama, nik }, process.env.REFRESH_TOKEN, { expiresIn: '90d' });
     
-                return res.json({status: true, access_token, refresh_token });
+                return res.json({status: true, user: id, access_token, refresh_token });
             });
         })
         .catch(err => {

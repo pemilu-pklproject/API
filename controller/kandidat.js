@@ -2,7 +2,7 @@ const { Kandidat } = require("../database/models")
 
 //insert kandidat
 const insertKandidat = async (req, res) => {
-    const { id: adminId } = req.user;
+    const { id: adminId } = req.user.id;
     const kandidatData = { ...req.body, id_admin: adminId };
 
     Kandidat

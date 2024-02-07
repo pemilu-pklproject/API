@@ -10,8 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.hasOne(models.TPS, {
+        foreignKey: 'id_saksi',
+        sourceKey: 'id'
+      });
     }
+    
   }
   Data_Relawan.init({
     nama: DataTypes.STRING,

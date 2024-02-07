@@ -20,7 +20,9 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     jenis_kelamin: DataTypes.ENUM("pria","wanita"),
     no_hp: DataTypes.STRING,
-    id_kandidat: DataTypes.INTEGER
+    id_kandidat: DataTypes.INTEGER,
+    isRelawan: DataTypes.BOOLEAN,
+    isSaksi: DataTypes.BOOLEAN
   }, {
     sequelize,
     timestamps: false,

@@ -29,6 +29,12 @@ module.exports = {
       },
       id_kandidat: {
         type: Sequelize.INTEGER
+      },
+      isRelawan: {
+        type: Sequelize.BOOLEAN
+      },
+      isSaksi: {
+        type: Sequelize.BOOLEAN
       }
     });
   },

@@ -4,16 +4,16 @@ const { decrypt, encrypt } = require('../helper/bcrypt');
 
 const authLogin = async (req, res) => {
     // console.log(req.body)
-    const { username, password } = req.body
+    const { email, password } = req.body
 
     Super_admin
-        .findAll({ where: { username } })
+        .findAll({ where: { email } })
         .then(data => {
-            if (data.length == 0) return res.status(401).json({status: false, msg: 'Username salah' });
+            if (data.length == 0) return res.status(401).json({status: false, msg: 'Email tidak dikenal' });
 
             decrypt(password, data[0].password, (match) => {
                 if (!match) { 
-                    return res.status(401).json({ status: false, msg: 'Password salah' })
+                    return res.status(401).json({ status: false, msg: 'Password salah!' })
                 };
 
                 const { id, email, nama } = data[0];
@@ -56,6 +56,19 @@ const kandidatLogin = async (req, res) => {
         })
 }
 
+const AdminRegister =  (req, res) => {
+    const { password } = req.body;
+    req.body.password = encrypt(password);
+
+    Super_admin
+    .create(req.body)
+    .then(() => res.status(201).json({ status: true, msg: 'Registrasi berhasil' }))
+    .catch((err) => {
+        console.error(err);
+        res.statusCode = 500;
+        res.send('Server Error');
+    });
+}
 
 const KandidatRegister =  (req, res) => {
     const { password } = req.body;
@@ -71,4 +84,4 @@ const KandidatRegister =  (req, res) => {
     });
 }
 
-module.exports = {authLogin, KandidatRegister, kandidatLogin}
+module.exports = {authLogin, KandidatRegister, kandidatLogin, AdminRegister}

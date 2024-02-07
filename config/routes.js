@@ -51,7 +51,8 @@ const {
 const { 
     authLogin, 
     KandidatRegister, 
-    kandidatLogin
+    kandidatLogin,
+    AdminRegister
 } = require("../controller/auth");
 
 const gen_token = require('../helper/generate-token')
@@ -103,9 +104,10 @@ module.exports = (app) =>{
     app.put(`/pemilih/alamat/update/:id`, updateAlamat)
 
     //login
-    app.post(`/admin/login`, authLogin)
+    app.post(`/login/admin`, authLogin)
     app.post(`/login/kandidat`, kandidatLogin)
     app.post(`/kandidat/regis`, KandidatRegister)
+    app.post(`/admin/regis`, AdminRegister)
 
     app.post(`/gen-access-token`, (req, res) => {
         const { refresh_token } = req.body

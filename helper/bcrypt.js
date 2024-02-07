@@ -7,9 +7,9 @@ const encrypt = (data) => {
 };
 
 const decrypt = (data, dataCompare, callback) => {
-    bcrypt.compare(data, dataCompare, (err, result) => {
-        return callback(result);
-  });
+    bcrypt.compare(data, dataCompare, (err, result) =>{
+      return callback(result);
+    });
 };
 
 module.exports = { encrypt, decrypt };

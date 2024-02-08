@@ -1,4 +1,5 @@
 const { Wilayah } = require("../database/models")
+const { Op } = require('sequelize');
 
 const getAllWilayah = async (req,res) =>{
     Wilayah
@@ -15,8 +16,9 @@ const getAllWilayah = async (req,res) =>{
 }
 
 const getWilayahById = async (req, res) => {
+    const id = req.params.id
     Wilayah
-        .findAll({ where: { kode: req.params.id } })
+        .findAll({ where: { kode: { [Op.like]: `%${id}%` } } })
         .then((data) => {
             if(data.length == 0) {
                 return res.status(404).json({status: false, message: "id kandidat not found"})}

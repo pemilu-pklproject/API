@@ -55,7 +55,12 @@ const {
     RelawanLogin
 } = require("../controller/auth");
 
-const gen_token = require('../helper/generate-token')
+const gen_token = require('../helper/generate-token');
+
+const { 
+    getAllWilayah, 
+    getWilayahById 
+} = require("../controller/wilayah");
 
 module.exports = (app) =>{
     //relawan
@@ -109,6 +114,10 @@ module.exports = (app) =>{
     app.post(`/login/relawan`, RelawanLogin)
     app.post(`/regis/kandidat`, KandidatRegister)
     // app.post(`/regis/admin`, AdminRegister)
+
+    //wilayah
+    app.get(`/wilayah`, getAllWilayah)
+    app.get(`/wilayah/:id`, getWilayahById)
 
     app.post(`/gen-access-token`, (req, res) => {
         const { refresh_token } = req.body

@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.belongsTo(models.TPS,{
         foreignKey: 'id_tps',
-        sourceKey: 'id'
+        targetKey: 'id'
       })
     }
   }

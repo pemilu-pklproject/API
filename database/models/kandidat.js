@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
       Data_Kandidat.belongsTo(models.Dapil, {
         foreignKey: 'id_dapil',
         targetKey: 'id'
+      });
+      Data_Kandidat.belongsTo(models.Wilayah, {
+        foreignKey: 'id_wilayah',
+        targetKey: 'id'
       })
     }
     

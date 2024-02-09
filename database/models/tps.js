@@ -21,11 +21,15 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Pemilih, {
         foreignKey: 'id_tps',
         sourceKey: 'id'
+      });
+      this.belongsTo(models.Dapil, {
+        foreignKey: 'id_dapil',
+        targetKey: 'id'
       })
     }
   }
   Data_TPS.init({
-    dapil: DataTypes.STRING,
+    id_dapil: DataTypes.INTEGER,
     nomor: DataTypes.INTEGER,
     id_saksi: DataTypes.INTEGER,
     id_kandidat: DataTypes.INTEGER

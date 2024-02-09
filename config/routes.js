@@ -59,6 +59,7 @@ const {
     getKecamatanById,
     getDesaById
 } = require("../controller/wilayah");
+const { getAllDapil } = require("../controller/dapil");
 
 const BASE_URL = '/si-pemilu/api/v1'
 
@@ -116,6 +117,9 @@ module.exports = (app) =>{
     app.get(`${BASE_URL}/wilayah/kabupaten/:id_provinsi.json`, getKabupatenById)
     app.get(`${BASE_URL}/wilayah/kecamatan/:id_kab_kota.json`, getKecamatanById)
     app.get(`${BASE_URL}/wilayah/kelurahan-desa/:id_kecamatan.json`, getDesaById)
+
+    //dapil
+    app.get(`${BASE_URL}/dapil/:id_jabatan.json`, getAllDapil)
 
     app.post(`/gen-access-token`, (req, res) => {
         const { refresh_token } = req.body

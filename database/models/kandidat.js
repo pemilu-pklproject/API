@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       Data_Kandidat.belongsTo(models.Calon_jabatan, {
         foreignKey: 'id_jabatan',
         targetKey: 'id'
+      });
+      Data_Kandidat.belongsTo(models.Dapil, {
+        foreignKey: 'id_dapil',
+        targetKey: 'id'
       })
     }
     
@@ -24,10 +28,11 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     jenis_kelamin: DataTypes.ENUM("pria","wanita"),
     partai: DataTypes.STRING,
-    dapil: DataTypes.STRING,
-    no_urut: DataTypes.INTEGER,
+    id_dapil: DataTypes.INTEGER,
+    no_urut: DataTypes.STRING,
     id_jabatan: DataTypes.INTEGER,
-    id_admin: DataTypes.INTEGER
+    id_admin: DataTypes.INTEGER,
+    id_wilayah: DataTypes.INTEGER
   }, {
     sequelize,
     timestamps: false,

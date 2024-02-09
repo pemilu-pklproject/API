@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.TPS,{
         foreignKey: 'id_tps',
         targetKey: 'id'
+      });
+      this.belongsTo(models.Wilayah, {
+        foreignKey: 'id_wilayah',
+        targetKey: 'id'
       })
     }
   }
@@ -24,7 +28,10 @@ module.exports = (sequelize, DataTypes) => {
     no_hp: DataTypes.STRING,
     jenis_kelamin: DataTypes.ENUM("pria","wanita"),
     id_relawan: DataTypes.INTEGER,
-    id_tps: DataTypes.INTEGER
+    id_tps: DataTypes.INTEGER,
+    alamat: DataTypes.STRING,
+    rt_rw: DataTypes.STRING,
+    id_wilayah: DataTypes.INTEGER
   }, {
     sequelize,
     timestamps:false,

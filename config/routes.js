@@ -54,8 +54,10 @@ const {
 const gen_token = require('../helper/generate-token');
 
 const { 
-    getAllWilayah, 
-    getWilayahById 
+    getKabupatenById,
+    getAllProvinsi,
+    getKecamatanById,
+    getDesaById
 } = require("../controller/wilayah");
 
 const BASE_URL = '/si-pemilu/api/v1'
@@ -110,8 +112,10 @@ module.exports = (app) =>{
     // app.post(`/regis/admin`, AdminRegister)
 
     //wilayah
-    app.get(`/wilayah`, getAllWilayah)
-    app.get(`/wilayah/:id`, getWilayahById)
+    app.get(`${BASE_URL}/wilayah/provinsi.json`, getAllProvinsi)
+    app.get(`${BASE_URL}/wilayah/kabupaten/:id_provinsi.json`, getKabupatenById)
+    app.get(`${BASE_URL}/wilayah/kecamatan/:id_kab_kota.json`, getKecamatanById)
+    app.get(`${BASE_URL}/wilayah/kelurahan-desa/:id_kecamatan.json`, getDesaById)
 
     app.post(`/gen-access-token`, (req, res) => {
         const { refresh_token } = req.body

@@ -1,9 +1,17 @@
 const { Wilayah } = require("../database/models")
-const { Op } = require('sequelize');
+const { Op, Sequelize } = require('sequelize');
 
-const getAllWilayah = async (req,res) =>{
+const getAllProvinsi = async (req,res) =>{
     Wilayah
-        .findAll()
+    .findAll({
+        where: {
+            kode: {
+                [Op.and]: [
+                    Sequelize.where(Sequelize.fn('LENGTH', Sequelize.col('kode')), 2)
+                ]
+            }
+        }
+    })
         .then((datas)=>{
             res.status=true
             res.json(datas)
@@ -15,13 +23,24 @@ const getAllWilayah = async (req,res) =>{
         })
 }
 
-const getWilayahById = async (req, res) => {
-    const id = req.params.id
+const getKabupatenById = async (req, res) => {
+    const id = req.params.id_provinsi
+    const prefix = id.toString().substring(0, 2);
+
     Wilayah
-        .findAll({ where: { kode: { [Op.like]: `%${id}%` } } })
+    .findAll({
+        where: {
+            kode: {
+                [Op.and]: [
+                    Sequelize.where(Sequelize.fn('LENGTH', Sequelize.col('kode')), 5),
+                    Sequelize.where(Sequelize.fn('LEFT', Sequelize.col('kode'), 2), prefix) 
+                ]
+            }
+        }
+    })
         .then((data) => {
             if(data.length == 0) {
-                return res.status(404).json({status: false, message: "id kandidat not found"})}
+                return res.status(404).json({status: false, message: "id provinsi not found"})}
             res.json(data)
         })
         .catch(err => {
@@ -31,7 +50,65 @@ const getWilayahById = async (req, res) => {
         })
 };
 
+
+const getKecamatanById = async (req, res) => {
+    const id = req.params.id_kab_kota
+    const prefix = id.toString().substring(0, 5);
+
+    Wilayah
+    .findAll({
+        where: {
+            kode: {
+                [Op.and]: [
+                    Sequelize.where(Sequelize.fn('LENGTH', Sequelize.col('kode')), 8),
+                    Sequelize.where(Sequelize.fn('LEFT', Sequelize.col('kode'), 5), prefix) 
+                ]
+            }
+        }
+    })
+        .then((data) => {
+            if(data.length == 0) {
+                return res.status(404).json({status: false, message: "id kabupaten/kota not found"})}
+            res.json(data)
+        })
+        .catch(err => {
+            console.log(err)
+            res.statusCode = 500
+            res.send("Server Error")
+        })
+};
+
+const getDesaById = async (req, res) => {
+    const id = req.params.id_kecamatan
+    const prefix = id.toString().substring(0, 8);
+
+    Wilayah
+    .findAll({
+        where: {
+            kode: {
+                [Op.and]: [
+                    Sequelize.where(Sequelize.fn('LENGTH', Sequelize.col('kode')), 13),
+                    Sequelize.where(Sequelize.fn('LEFT', Sequelize.col('kode'), 8), prefix) 
+                ]
+            }
+        }
+    })
+        .then((data) => {
+            if(data.length == 0) {
+                return res.status(404).json({status: false, message: "id kecamatan not found"})}
+            res.json(data)
+        })
+        .catch(err => {
+            console.log(err)
+            res.statusCode = 500
+            res.send("Server Error")
+        })
+};
+
+
 module.exports = {
-    getAllWilayah,
-    getWilayahById
+    getAllProvinsi,
+    getKabupatenById,
+    getKecamatanById,
+    getDesaById
 }

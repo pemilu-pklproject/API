@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       Data_Kandidat.belongsTo(models.Calon_jabatan, {
         foreignKey: 'id_jabatan',
         targetKey: 'id'
-      });
+      })
     }
     
   }

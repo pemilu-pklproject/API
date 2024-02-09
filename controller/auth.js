@@ -38,7 +38,7 @@ const kandidatLogin = async (req, res) => {
     Kandidat
     .findAll({ where: { nik } })
         .then(data => {
-            if (data.length == 0) return res.status(401).json({status: false, msg: 'nik tidak ditemukan' });
+            if (data.length == 0) return res.status(401).json({status: false, msg: 'Username tidak dikenal' });
 
             decrypt(password, data[0].password, (match) => {
                 if (!match) { 

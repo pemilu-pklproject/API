@@ -2,12 +2,12 @@ const { Kandidat } = require("../database/models")
 
 //insert kandidat
 const insertKandidat = async (req, res) => {
-    const { id: adminId } = req.user.id;
-    const kandidatData = { ...req.body, id_admin: adminId };
+    // const { id: adminId } = req.user.id;
+    // const kandidatData = { ...req.body, id_admin: adminId };
 
     Kandidat
-        .create(kandidatData)
-        .then(()=>{ res.json({ status:true, msg: kandidatData, message: "data input success"})})
+        .create(req.body)
+        .then(()=>{ res.json({ status:true , message: "data input success"})})
         .catch(err=>{
             console.log(err)
             res.statusCode=500

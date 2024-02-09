@@ -43,10 +43,6 @@ const {
     deletAllHasilSuara
 } = require("../controller/suara");
 
-const { 
-    insertAlamat, 
-    updateAlamat,
-} = require("../controller/alamat");
 
 const { 
     authLogin, 
@@ -62,6 +58,8 @@ const {
     getWilayahById 
 } = require("../controller/wilayah");
 
+const BASE_URL = '/si-pemilu/api/v1'
+
 module.exports = (app) =>{
     //relawan
     app.post(`/relawan/add`, insertRelawan)
@@ -72,9 +70,9 @@ module.exports = (app) =>{
     app.delete(`/relawan/delete`, deleteAllRelawan)
 
     //kandidat
-    app.post(`/kandidat/add`, insertKandidat)
-    app.get(`/kandidat/:id`, getKandidatById)
-    app.get(`/kandidat`, getAllKandidat)
+    app.post(`${BASE_URL}/kandidat/add`, insertKandidat)
+    app.get(`${BASE_URL}/kandidat/:id.json`, getKandidatById)
+    app.get(`${BASE_URL}/kandidat.json`, getAllKandidat)
     app.put(`/kandidat/update/:id`, updateKandidat)
     app.delete(`/kandidat/delete/:id`, deleteKandidat)
     app.delete(`/kandidat/delete`, deletAllKandidat)
@@ -103,10 +101,6 @@ module.exports = (app) =>{
     app.put(`/hasil-suara/update/:id`, updateHasilSuara)
     app.delete(`/hasil-suara/delete/:id`, deleteHasilSuara)
     app.delete(`/hasil-suara/delete`, deletAllHasilSuara)
-
-    //alamat
-    app.post(`/pemilih/alamat/add`, insertAlamat)
-    app.put(`/pemilih/alamat/update/:id`, updateAlamat)
 
     //login
     app.post(`/login/admin`, authLogin)

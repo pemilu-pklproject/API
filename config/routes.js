@@ -57,9 +57,21 @@ const {
     getKabupatenById,
     getAllProvinsi,
     getKecamatanById,
-    getDesaById
+    getDesaById,
+    getProvinsiById,
+    getAllKabupaten,
+    getAllKecamatan,
+    getAllDesa
 } = require("../controller/wilayah");
-const { getAllDapil } = require("../controller/dapil");
+
+const { 
+    getAllDapil 
+} = require("../controller/dapil");
+
+const { 
+    getJabatanById, 
+    getAllJabatan 
+} = require("../controller/jabatan");
 
 const BASE_URL = '/si-pemilu/api/v1'
 
@@ -114,12 +126,20 @@ module.exports = (app) =>{
 
     //wilayah
     app.get(`${BASE_URL}/wilayah/provinsi.json`, getAllProvinsi)
-    app.get(`${BASE_URL}/wilayah/kabupaten/:id_provinsi.json`, getKabupatenById)
-    app.get(`${BASE_URL}/wilayah/kecamatan/:id_kab_kota.json`, getKecamatanById)
-    app.get(`${BASE_URL}/wilayah/kelurahan-desa/:id_kecamatan.json`, getDesaById)
+    app.get(`${BASE_URL}/wilayah/provinsi/:id`, getProvinsiById)
+    app.get(`${BASE_URL}/wilayah/kabupaten-kota/:id_provinsi.json`, getAllKabupaten)
+    app.get(`${BASE_URL}/wilayah/kabupaten-kota/:id`, getKabupatenById)
+    app.get(`${BASE_URL}/wilayah/kecamatan/:id_kab_kota.json`, getAllKecamatan)
+    app.get(`${BASE_URL}/wilayah/kecamatan/:id`, getKecamatanById)
+    app.get(`${BASE_URL}/wilayah/kelurahan-desa/:id_kecamatan.json`, getAllDesa)
+    app.get(`${BASE_URL}/wilayah/kelurahan-desa/:id`, getDesaById)
 
     //dapil
-    app.get(`${BASE_URL}/dapil/:id_jabatan.json`, getAllDapil)
+    app.get(`${BASE_URL}/dapil/:id_jabatan/:id_dapil.json`, getAllDapil)
+
+    //jabatan
+    app.get(`${BASE_URL}/calon-jabatan.json`, getAllJabatan)
+    app.get(`${BASE_URL}/calon-jabatan/:id.json`, getJabatanById)
 
     app.post(`/gen-access-token`, (req, res) => {
         const { refresh_token } = req.body

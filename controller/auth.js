@@ -5,12 +5,12 @@ const { decrypt, encrypt } = require('../helper/bcrypt');
 //login admin
 const authLogin = async (req, res) => {
     // console.log(req.body)
-    const { email, password } = req.body
+    const { username , password } = req.body
 
     Super_admin
-        .findAll({ where: { email } })
+        .findAll({ where: { email : username } })
         .then(data => {
-            if (data.length == 0) return res.status(401).json({status: false, msg: 'Email tidak dikenal' });
+            if (data.length == 0) return res.status(401).json({status: false, msg: 'Username tidak dikenal' });
 
             decrypt(password, data[0].password, (match) => {
                 if (!match) { 

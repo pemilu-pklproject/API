@@ -74,9 +74,24 @@ const {
     getAllJabatan 
 } = require("../controller/jabatan");
 
+const { 
+    insertAdmin, 
+    getAllAdmin, 
+    getAdminById,
+    updateAdmin
+} = require("../controller/admin");
+
 const BASE_URL = '/si-pemilu/api/v1'
 
 module.exports = (app) =>{
+
+    //admin
+    app.post(`${BASE_URL}/admin/add`, insertAdmin)
+    app.get(`${BASE_URL}/admin.json`, getAllAdmin)
+    app.get(`${BASE_URL}/admin/:id.json`, getAdminById)
+    app.put(`${BASE_URL}/admin/update/:id`, updateAdmin)
+    app.delete(`${BASE_URL}/admin/delete/:id`)
+    
     //relawan
     app.post(`${BASE_URL}/relawan/add`, insertRelawan)
     app.get(`${BASE_URL}/relawan/:id`, getRelawanById)

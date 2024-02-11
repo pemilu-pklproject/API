@@ -65,7 +65,8 @@ const {
 } = require("../controller/wilayah");
 
 const { 
-    getAllDapil 
+    getAllDapil, 
+    getDapilById 
 } = require("../controller/dapil");
 
 const { 
@@ -135,7 +136,8 @@ module.exports = (app) =>{
     app.get(`${BASE_URL}/wilayah/kelurahan-desa/:id`, getDesaById)
 
     //dapil
-    app.get(`${BASE_URL}/dapil/:id_jabatan/:id_dapil.json`, getAllDapil)
+    app.get(`${BASE_URL}/dapil/:id_jabatan/:id_wilayah.json`, getAllDapil)
+    app.get(`${BASE_URL}/caleg-dapil/:id`, getDapilById)
 
     //jabatan
     app.get(`${BASE_URL}/calon-jabatan.json`, getAllJabatan)

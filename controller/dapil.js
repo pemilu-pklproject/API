@@ -3,7 +3,7 @@ const { Op, Sequelize } = require('sequelize');
 
 const getAllDapil = async (req, res) => {
     const id_jabatan = req.params.id_jabatan;
-    const id_dapil = req.params.id_dapil;
+    const id_dapil = req.params.id_wilayah;
     const prefix = id_dapil.toString().substring(0, 2);
 
     try {
@@ -41,6 +41,22 @@ const getAllDapil = async (req, res) => {
     }
 };
 
+const getDapilById = async (req, res) => {
+    Calon_jabatan
+        .findAll({ where: { id: req.params.id } })
+        .then((data) => {
+            if(data.length == 0) {
+                return res.status(404).json({status: false, message: "id dapil not found"})}
+            res.json(data)
+        })
+        .catch(err => {
+            console.log(err)
+            res.statusCode = 500
+            res.send("Server Error")
+        })
+};
+
 module.exports = {
-    getAllDapil
+    getAllDapil,
+    getDapilById
 };

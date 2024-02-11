@@ -32,7 +32,9 @@ const {
     getAllTPS, 
     updateTPS, 
     deleteTPS, 
-    deleteAllTPS 
+    deleteAllTPS, 
+    getTPSByDapil,
+    getTPSByWilayah
 } = require("../controller/tps");
 
 const { 
@@ -122,6 +124,8 @@ module.exports = (app) =>{
     app.post(`${BASE_URL}/tps/add`, insertTPS)
     app.get(`${BASE_URL}/tps/:id`, getTPSById)
     app.get(`${BASE_URL}/tps`, getAllTPS)
+    app.get(`${BASE_URL}/tps/:id_dapil.json`, getTPSByDapil)
+    app.get(`${BASE_URL}/data-tps/:id_wilayah`, getTPSByWilayah)
     app.put(`${BASE_URL}/tps/update/:id`, updateTPS)
     app.delete(`${BASE_URL}/tps/delete/:id`, deleteTPS)
     app.delete(`${BASE_URL}/tps/delete`, deleteAllTPS)

@@ -78,20 +78,20 @@ const BASE_URL = '/si-pemilu/api/v1'
 
 module.exports = (app) =>{
     //relawan
-    app.post(`/relawan/add`, insertRelawan)
-    app.get(`/relawan/:id`, getRelawanById)
-    app.get(`/relawan`, getAllRelawan)
-    app.put(`/relawan/update/:id`, updateRelawan)
-    app.delete(`/relawan/delete/:id`, deleteRelawan)
-    app.delete(`/relawan/delete`, deleteAllRelawan)
+    app.post(`${BASE_URL}/relawan/add`, insertRelawan)
+    app.get(`${BASE_URL}/relawan/:id`, getRelawanById)
+    app.get(`${BASE_URL}/relawan`, getAllRelawan)
+    app.put(`${BASE_URL}/relawan/update/:id`, updateRelawan)
+    app.delete(`${BASE_URL}/relawan/delete/:id`, deleteRelawan)
+    app.delete(`${BASE_URL}/relawan/delete`, deleteAllRelawan)
 
     //kandidat
     app.post(`${BASE_URL}/kandidat/add`, insertKandidat)
     app.get(`${BASE_URL}/kandidat/:id.json`, getKandidatById)
     app.get(`${BASE_URL}/kandidat.json`, getAllKandidat)
-    app.put(`/kandidat/update/:id`, updateKandidat)
-    app.delete(`/kandidat/delete/:id`, deleteKandidat)
-    app.delete(`/kandidat/delete`, deletAllKandidat)
+    app.put(`${BASE_URL}/kandidat/update/:id`, updateKandidat)
+    app.delete(`${BASE_URL}/kandidat/delete/:id`, deleteKandidat)
+    app.delete(`${BASE_URL}/kandidat/delete`, deletAllKandidat)
 
     //pemilih
     app.post(`/pemilih/add`, insertPemilih)

@@ -42,7 +42,7 @@ const getAllDapil = async (req, res) => {
 };
 
 const getDapilById = async (req, res) => {
-    Calon_jabatan
+    Dapil
         .findAll({ where: { id: req.params.id } })
         .then((data) => {
             if(data.length == 0) {

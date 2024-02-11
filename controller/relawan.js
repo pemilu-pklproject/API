@@ -31,6 +31,23 @@ const getAllRelawan = async (req, res) =>{
     })
 };
 
+//get relawan by kandidat
+const getRelawanByKandidat = async (req, res) =>{
+    const id = req.params.id_kandidat
+
+    Relawan
+    .findAll({ where : {id_kandidat: id } })
+    .then((datas)=>{
+        res.status=true
+        res.json(datas)
+    })
+    .catch(err =>{
+        console.log(err)
+        res.status=500
+        res.send("server error")
+    })
+};
+
 //get Relawan by Id
 const getRelawanById = async (req, res) => {
     Relawan
@@ -92,5 +109,6 @@ module.exports = {
     getAllRelawan,
     updateRelawan,
     deleteRelawan,
-    deleteAllRelawan
+    deleteAllRelawan,
+    getRelawanByKandidat
 };

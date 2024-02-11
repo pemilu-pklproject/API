@@ -10,13 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.hasOne(models.TPS, {
-        foreignKey: 'id_saksi',
-        sourceKey: 'id',
-        scope: {
-          isSaksi: true
-        }
-      });
+
     }
     
   }

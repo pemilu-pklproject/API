@@ -1,9 +1,10 @@
 const { Kandidat } = require("../database/models")
+const { decrypt, encrypt } = require('../helper/bcrypt');
 
 //insert kandidat
 const insertKandidat = async (req, res) => {
-    // const { id: adminId } = req.user.id;
-    // const kandidatData = { ...req.body, id_admin: adminId };
+    const { password } = req.body;
+    req.body.password = encrypt(password);
 
     Kandidat
         .create(req.body)

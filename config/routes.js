@@ -94,35 +94,35 @@ module.exports = (app) =>{
     app.delete(`${BASE_URL}/kandidat/delete`, deletAllKandidat)
 
     //pemilih
-    app.post(`/pemilih/add`, insertPemilih)
-    app.get(`/pemilih/:id`, getPemilihById)
-    app.get(`/pemilih`, getAllPemilih)
-    app.put(`/pemilih/update/:id`, updatePemilih)
-    app.delete(`/pemilih/delete/:id`, deletePemilih)
-    app.delete(`/pemilih/delete`, deleteAllPemilih)
+    app.post(`${BASE_URL}/pemilih/add`, insertPemilih)
+    app.get(`${BASE_URL}/pemilih/:id`, getPemilihById)
+    app.get(`${BASE_URL}/pemilih`, getAllPemilih)
+    app.put(`${BASE_URL}/pemilih/update/:id`, updatePemilih)
+    app.delete(`${BASE_URL}/pemilih/delete/:id`, deletePemilih)
+    app.delete(`${BASE_URL}/pemilih/delete`, deleteAllPemilih)
 
     //tps
-    app.post(`/tps/add`, insertTPS)
-    app.get(`/tps/:id`, getTPSById)
-    app.get(`/tps`, getAllTPS)
-    app.put(`/tps/update/:id`, updateTPS)
-    app.delete(`/tps/delete/:id`, deleteTPS)
-    app.delete(`/tps/delete`, deleteAllTPS)
+    app.post(`${BASE_URL}/tps/add`, insertTPS)
+    app.get(`${BASE_URL}/tps/:id`, getTPSById)
+    app.get(`${BASE_URL}/tps`, getAllTPS)
+    app.put(`${BASE_URL}/tps/update/:id`, updateTPS)
+    app.delete(`${BASE_URL}/tps/delete/:id`, deleteTPS)
+    app.delete(`${BASE_URL}/tps/delete`, deleteAllTPS)
 
 
     //hasil suara
-    app.post(`/hasil-suara/add`, insertHasilSuara)
-    app.get(`/hasil-suara/:id`, getHasilSuaraById)
-    app.get(`/hasil-suara`, getAllHasilSuara)
-    app.put(`/hasil-suara/update/:id`, updateHasilSuara)
-    app.delete(`/hasil-suara/delete/:id`, deleteHasilSuara)
-    app.delete(`/hasil-suara/delete`, deletAllHasilSuara)
+    app.post(`${BASE_URL}/hasil-suara/add`, insertHasilSuara)
+    app.get(`${BASE_URL}/hasil-suara/:id`, getHasilSuaraById)
+    app.get(`${BASE_URL}/hasil-suara`, getAllHasilSuara)
+    app.put(`${BASE_URL}/hasil-suara/update/:id`, updateHasilSuara)
+    app.delete(`${BASE_URL}/hasil-suara/delete/:id`, deleteHasilSuara)
+    app.delete(`${BASE_URL}/hasil-suara/delete`, deletAllHasilSuara)
 
     //login
-    app.post(`/login/admin`, authLogin)
-    app.post(`/login/kandidat`, kandidatLogin)
-    app.post(`/login/relawan`, RelawanLogin)
-    app.post(`/regis/kandidat`, KandidatRegister)
+    app.post(`${BASE_URL}/login/admin`, authLogin)
+    app.post(`${BASE_URL}/login/kandidat`, kandidatLogin)
+    app.post(`${BASE_URL}/login/relawan`, RelawanLogin)
+    app.post(`${BASE_URL}/regis/kandidat`, KandidatRegister)
     // app.post(`/regis/admin`, AdminRegister)
 
     //wilayah

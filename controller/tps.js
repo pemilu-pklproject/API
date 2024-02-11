@@ -2,11 +2,9 @@ const { TPS } = require("../database/models")
 
 //insert TPS
 const insertTPS = async (req, res) => {
-    const { id: adminId } = req.user.id;
-    const TPSData = { ...req.body, id_admin: adminId };
 
     TPS
-    .create(TPSData)
+    .create()
     .then(()=>{ res.json({ status:true, message: "data input success"})})
     .catch(err=>{
         console.log(err)

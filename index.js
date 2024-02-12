@@ -4,6 +4,7 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const routes = require('./config/routes');
+const swaggerUI = require('swagger-ui-express')
 const PORT = process.env.APP_PORT || 5000
 
 app.use(cors({origin: "*"}));
@@ -12,6 +13,9 @@ app.use(bodyParser.json());
 
 routes(app);
 
+const docApi = require('./apidocs.json')
+
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(docApi))
 app.use((req, res) => {
     res.status(404).send('Failed');
 });

@@ -2,6 +2,9 @@ const { Hasil_suara } = require("../database/models")
 
 //insert HasilSuara
 const insertHasilSuara = async (req, res) => {
+    const dokumen = req.files['dokumen'][0];
+    req.body.document = dokumen.filename
+
     Hasil_suara
         .create(req.body)
         .then(()=>{ res.json({ status:true, message: "data input success"})})

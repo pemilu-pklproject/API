@@ -49,7 +49,6 @@ const {
 
 const { 
     authLogin, 
-    KandidatRegister, 
     kandidatLogin,
     RelawanLogin
 } = require("../controller/auth");
@@ -90,21 +89,24 @@ module.exports = (app) =>{
 
     //admin
     app.post(`${BASE_URL}/admin/add`, insertAdmin)
+    app.post(`${BASE_URL}/login/admin`, authLogin)
     app.get(`${BASE_URL}/admin.json`, getAllAdmin)
     app.get(`${BASE_URL}/admin/:id.json`, getAdminById)
     app.put(`${BASE_URL}/admin/update/:id`, updateAdmin)
     app.delete(`${BASE_URL}/admin/delete/:id`)
 
     //relawan
+    app.post(`${BASE_URL}/login/relawan`, RelawanLogin)
     app.post(`${BASE_URL}/relawan/add`, insertRelawan)
     app.get(`${BASE_URL}/relawan/:id`, getRelawanById)
     app.get(`${BASE_URL}/relawan`, getAllRelawan)
-    app.get(`${BASE_URL}/data-relawan/:id_kandidat`, getRelawanByKandidat)
+    app.get(`${BASE_URL}/relawan/data/:id_kandidat`, getRelawanByKandidat)
     app.put(`${BASE_URL}/relawan/update/:id`, updateRelawan)
     app.delete(`${BASE_URL}/relawan/delete/:id`, deleteRelawan)
     app.delete(`${BASE_URL}/relawan/delete`, deleteAllRelawan)
 
     //kandidat
+    app.post(`${BASE_URL}/login/kandidat`, kandidatLogin)
     app.post(`${BASE_URL}/kandidat/add`, insertKandidat)
     app.get(`${BASE_URL}/kandidat/:id.json`, getKandidatById)
     app.get(`${BASE_URL}/kandidat.json`, getAllKandidat)
@@ -125,7 +127,7 @@ module.exports = (app) =>{
     app.get(`${BASE_URL}/tps/:id`, getTPSById)
     app.get(`${BASE_URL}/tps`, getAllTPS)
     app.get(`${BASE_URL}/tps/:id_dapil.json`, getTPSByDapil)
-    app.get(`${BASE_URL}/data-tps/:id_wilayah`, getTPSByWilayah)
+    app.get(`${BASE_URL}/tps/data/:id_wilayah`, getTPSByWilayah)
     app.put(`${BASE_URL}/tps/update/:id`, updateTPS)
     app.delete(`${BASE_URL}/tps/delete/:id`, deleteTPS)
     app.delete(`${BASE_URL}/tps/delete`, deleteAllTPS)
@@ -158,7 +160,7 @@ module.exports = (app) =>{
 
     //dapil
     app.get(`${BASE_URL}/dapil/:id_jabatan/:id_wilayah.json`, getAllDapil)
-    app.get(`${BASE_URL}/caleg-dapil/:id`, getDapilById)
+    app.get(`${BASE_URL}/dapil/:id`, getDapilById)
 
     //jabatan
     app.get(`${BASE_URL}/calon-jabatan.json`, getAllJabatan)

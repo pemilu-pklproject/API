@@ -1,0 +1,99 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "SI Pemilu API",
+      "version": "1.0.0",
+      "description": "API documentation for SI Pemilu application"
+    },
+    
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Auth",
+      "description": ""
+    },
+    {
+      "name": "Content",
+      "description": ""
+    },
+    {
+      "name": "Categori",
+      "description": ""
+    },
+    {
+      "name": "Home",
+      "description": ""
+    },
+    {
+      "name": "Review",
+      "description": ""
+    },
+    {
+      "name": "User",
+      "description": ""
+    }
+  ],
+    "paths": {
+      "/si-pemilu/api/v1/admin/add": {
+        "post": {
+          "summary": "Add new admin",
+          "responses": {
+            "200": { "description": "Admin added successfully" },
+            "500": { "description": "Server Error" }
+          }
+        }
+      },
+      "/si-pemilu/api/v1/admin.json": {
+        "get": {
+          "summary": "Get all admins",
+          "responses": {
+            "200": { "description": "List of all admins" },
+            "500": { "description": "Server Error" }
+          }
+        }
+      },
+      "/si-pemilu/api/v1/admin/{id}.json": {
+        "get": {
+          "summary": "Get admin by ID",
+          "responses": {
+            "200": { "description": "Admin data" },
+            "404": { "description": "Admin not found" },
+            "500": { "description": "Server Error" }
+          }
+        }
+      },
+      "/si-pemilu/api/v1/admin/update/{id}": {
+        "put": {
+          "summary": "Update admin by ID",
+          "responses": {
+            "200": { "description": "Admin updated successfully" },
+            "500": { "description": "Server Error" }
+          }
+        }
+      },
+      "/si-pemilu/api/v1/admin/delete/{id}": {
+        "delete": {
+          "summary": "Delete admin by ID",
+          "responses": {
+            "200": { "description": "Admin deleted successfully" },
+            "500": { "description": "Server Error" }
+          }
+        }
+      },
+      "/si-pemilu/api/v1/relawan/add": {
+        "post": {
+          "summary": "Add new relawan",
+          "responses": {
+            "200": { "description": "Relawan added successfully" },
+            "500": { "description": "Server Error" }
+          }
+        }
+      }
+      
+    }
+  }
+  

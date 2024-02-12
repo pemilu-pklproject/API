@@ -8,7 +8,7 @@ const authLogin = async (req, res) => {
     const { username , password } = req.body
 
     Super_admin
-        .findAll({ where: { email : username } })
+        .findAll({ where: { email : username, password: password } })
         .then(data => {
             if (data.length == 0) return res.status(401).json({status: false, msg: 'Username tidak dikenal' });
 
@@ -65,7 +65,7 @@ const RelawanLogin = async (req, res) => {
     const { nik, password } = req.body;
 
     Relawan
-    .findAll({ where: { nik } })
+    .findAll({ where: { nik: nik, password : password } })
         .then(data => {
             if (data.length == 0) return res.status(401).json({status: false, msg: 'nik tidak ditemukan' });
 
@@ -104,26 +104,11 @@ const RelawanLogin = async (req, res) => {
 //     });
 // }
 
-//regis kandidat
-const KandidatRegister =  (req, res) => {
-    const { password } = req.body;
-    req.body.password = encrypt(password);
-
-    Kandidat
-    .create(req.body)
-    .then(() => res.status(201).json({ status: true, msg: 'Registrasi berhasil' }))
-    .catch((err) => {
-        console.error(err);
-        res.statusCode = 500;
-        res.send('Server Error');
-    });
-}
 
 
 
 module.exports = {
     authLogin, 
-    KandidatRegister, 
     kandidatLogin, 
     RelawanLogin,
     // AdminRegister,

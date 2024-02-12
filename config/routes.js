@@ -88,8 +88,8 @@ const BASE_URL = '/si-pemilu/api/v1'
 module.exports = (app) =>{
 
     //admin
-    app.post(`${BASE_URL}/admin/add`, insertAdmin)
     app.post(`${BASE_URL}/login/admin`, authLogin)
+    app.post(`${BASE_URL}/admin/add`, insertAdmin)
     app.get(`${BASE_URL}/admin.json`, getAllAdmin)
     app.get(`${BASE_URL}/admin/:id.json`, getAdminById)
     app.put(`${BASE_URL}/admin/update/:id`, updateAdmin)
@@ -145,7 +145,6 @@ module.exports = (app) =>{
     app.post(`${BASE_URL}/login/admin`, authLogin)
     app.post(`${BASE_URL}/login/kandidat`, kandidatLogin)
     app.post(`${BASE_URL}/login/relawan`, RelawanLogin)
-    app.post(`${BASE_URL}/regis/kandidat`, KandidatRegister)
     // app.post(`/regis/admin`, AdminRegister)
 
     //wilayah

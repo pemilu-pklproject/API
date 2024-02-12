@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     id_wilayah: DataTypes.INTEGER,
     nomor: DataTypes.INTEGER,
     id_saksi: DataTypes.INTEGER,
+    nama_kpps: DataTypes.STRING,
     id_kandidat: DataTypes.INTEGER
   }, {
     sequelize,

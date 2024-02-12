@@ -5,10 +5,10 @@ const { decrypt, encrypt } = require('../helper/bcrypt');
 //login admin
 const authLogin = async (req, res) => {
     // console.log(req.body)
-    const { username , password } = req.body
+    const { email , password } = req.body
 
     Super_admin
-        .findAll({ where: { email : username, password: password } })
+        .findAll({ where: { email : email } })
         .then(data => {
             if (data.length == 0) return res.status(401).json({status: false, msg: 'Username tidak dikenal' });
 
@@ -65,7 +65,7 @@ const RelawanLogin = async (req, res) => {
     const { nik, password } = req.body;
 
     Relawan
-    .findAll({ where: { nik: nik, password : password } })
+    .findAll({ where: { nik: nik } })
         .then(data => {
             if (data.length == 0) return res.status(401).json({status: false, msg: 'nik tidak ditemukan' });
 

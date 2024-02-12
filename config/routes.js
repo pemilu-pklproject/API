@@ -83,6 +83,8 @@ const {
     updateAdmin
 } = require("../controller/admin");
 
+const { uploadImage } = require('../helper/image-handler');
+
 const BASE_URL = '/si-pemilu/api/v1'
 
 module.exports = (app) =>{
@@ -134,7 +136,7 @@ module.exports = (app) =>{
 
 
     //hasil suara
-    app.post(`${BASE_URL}/hasil-suara/add`, insertHasilSuara)
+    app.post(`${BASE_URL}/hasil-suara/add`, uploadImage, insertHasilSuara)
     app.get(`${BASE_URL}/hasil-suara/:id`, getHasilSuaraById)
     app.get(`${BASE_URL}/hasil-suara`, getAllHasilSuara)
     app.put(`${BASE_URL}/hasil-suara/update/:id`, updateHasilSuara)

@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 routes(app);
 
 const docApi = require('./apidocs.json')
+app.use('/assets', express.static('assets'))
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(docApi))
 app.use((req, res) => {

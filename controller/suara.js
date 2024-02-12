@@ -1,13 +1,19 @@
 const { Hasil_suara } = require("../database/models")
+const path = require('path');
 
 //insert HasilSuara
 const insertHasilSuara = async (req, res) => {
-    const dokumen = req.files['dokumen'][0];
-    req.body.document = dokumen.filename
+    console.log(req.body)
+    const dataSuara = {
+        id_tps: req.body.id_tps,
+        id_kandidat: req.body.id_kandidat,
+        dokumen: req.file.path,
+        total: req.body.total
+    }
 
     Hasil_suara
-        .create(req.body)
-        .then(()=>{ res.json({ status:true, message: "data input success"})})
+        .create(dataSuara)
+        .then(()=>{ res.json({ status:true, message: "data input hasil suara success"})})
         .catch(err=>{
             console.log(err)
             res.statusCode=500

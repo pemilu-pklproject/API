@@ -13,11 +13,11 @@
   ],
   "tags": [
     {
-      "name": "Auth",
+      "name": "Login",
       "description": ""
     },
     {
-      "name": "Content",
+      "name": "Regis",
       "description": ""
     },
     {
@@ -38,62 +38,198 @@
     }
   ],
     "paths": {
+      "/si-pemilu/api/v1/login/admin": {
+        "post": {
+          "tags": ["Login"],
+          "summary": "Admin login",
+          "description": "Mengembalikan access_token dan refresh_token",
+          "requestBody": {
+            "description": "Data yang dikirimkan",
+            "content": {
+              "application/json": {
+                "example": {
+                  "email": "email",
+                  "passowrd": "password"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": true,
+                    "id": "id",
+                    "nama": "nama",
+                    "access_token": "access_token",
+                    "refresh_token": "refresh_token"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "email dan Password salah"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+      "/si-pemilu/api/v1/login/kandidat": {
+        "post": {
+          "tags": ["Login"],
+          "summary": "kandidat login",
+          "description": "Mengembalikan access_token dan refresh_token",
+          "requestBody": {
+            "description": "Data yang dikirimkan",
+            "content": {
+              "application/json": {
+                "example": {
+                  "nik": "nik",
+                  "passowrd": "password"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": true,
+                    "id": "id",
+                    "nama": "nama",
+                    "access_token": "access_token",
+                    "refresh_token": "refresh_token"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "username dan Password salah"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+      "/si-pemilu/api/v1/login/relawan": {
+        "post": {
+          "tags": ["Login"],
+          "summary": "relawan login",
+          "description": "Mengembalikan access_token dan refresh_token",
+          "requestBody": {
+            "description": "Data yang dikirimkan",
+            "content": {
+              "application/json": {
+                "example": {
+                  "nik": "nik",
+                  "passowrd": "password"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": true,
+                    "id": "id",
+                    "nama": "nama",
+                    "access_token": "access_token",
+                    "refresh_token": "refresh_token"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "email dan Password salah"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
       "/si-pemilu/api/v1/admin/add": {
         "post": {
-          "summary": "Add new admin",
+          "tags": ["Regis"],
+          "summary": "admin registrasi",
+          "description": "data admin yang akan di input",
+          "requestBody": {
+            "description": "Data yang dikirimkan",
+            "content": {
+              "application/json": {
+                "example": {
+                  "nik": "nik",
+                  "passowrd": "password"
+                }
+              }
+            }
+          },
           "responses": {
-            "200": { "description": "Admin added successfully" },
-            "500": { "description": "Server Error" }
-          }
-        }
-      },
-      "/si-pemilu/api/v1/admin.json": {
-        "get": {
-          "summary": "Get all admins",
-          "responses": {
-            "200": { "description": "List of all admins" },
-            "500": { "description": "Server Error" }
-          }
-        }
-      },
-      "/si-pemilu/api/v1/admin/{id}.json": {
-        "get": {
-          "summary": "Get admin by ID",
-          "responses": {
-            "200": { "description": "Admin data" },
-            "404": { "description": "Admin not found" },
-            "500": { "description": "Server Error" }
-          }
-        }
-      },
-      "/si-pemilu/api/v1/admin/update/{id}": {
-        "put": {
-          "summary": "Update admin by ID",
-          "responses": {
-            "200": { "description": "Admin updated successfully" },
-            "500": { "description": "Server Error" }
-          }
-        }
-      },
-      "/si-pemilu/api/v1/admin/delete/{id}": {
-        "delete": {
-          "summary": "Delete admin by ID",
-          "responses": {
-            "200": { "description": "Admin deleted successfully" },
-            "500": { "description": "Server Error" }
-          }
-        }
-      },
-      "/si-pemilu/api/v1/relawan/add": {
-        "post": {
-          "summary": "Add new relawan",
-          "responses": {
-            "200": { "description": "Relawan added successfully" },
-            "500": { "description": "Server Error" }
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": true,
+                    "id": "id",
+                    "nama": "nama",
+                    "access_token": "access_token",
+                    "refresh_token": "refresh_token"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "email dan Password salah"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
           }
         }
       }
-      
     }
   }
   

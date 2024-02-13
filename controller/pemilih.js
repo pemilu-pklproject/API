@@ -43,6 +43,60 @@ const getPemilihById = async (req, res) => {
         })
 };
 
+//get pemilih by kandidat
+const getPemilihByKandidat = async (req, res) => {
+    const kandidat = req.params.id_kandidat
+    Pemilih
+        .findAll({ where: { id_kandidat: kandidat} })
+        .then((data) => {
+            if(data.length == 0) {
+                return res.status(404).json({status: false, message: "id pemilih not found"})}
+            res.json(data)
+        })
+        .catch(err => {
+            console.log(err)
+            res.statusCode = 500
+            res.send("Server Error")
+        })
+};
+
+//get pemilih by relawan
+const getPemilihByRelawan = async (req, res) => {
+    const kandidat = req.params.id_kandidat
+    const relawan = req.params.id_relawan
+    Pemilih
+        .findAll({ where: { id_kandidat: kandidat, id_relawan: relawan } })
+        .then((data) => {
+            if(data.length == 0) {
+                return res.status(404).json({status: false, message: "id pemilih not found"})}
+            res.json(data)
+        })
+        .catch(err => {
+            console.log(err)
+            res.statusCode = 500
+            res.send("Server Error")
+        })
+};
+
+//get pemilih by tps
+const getPemilihByTPS = async (req, res) => {
+
+    const tps = req.params.id_tps
+    Pemilih
+        .findAll({ where: { id_tps: tps } })
+        .then((data) => {
+            if(data.length == 0) {
+                return res.status(404).json({status: false, message: "id pemilih not found"})}
+            res.json(data)
+        })
+        .catch(err => {
+            console.log(err)
+            res.statusCode = 500
+            res.send("Server Error")
+        })
+};
+
+
 //update pemilih
 const updatePemilih = async (req, res) => {
     Pemilih
@@ -85,5 +139,8 @@ module.exports = {
     getAllPemilih,
     updatePemilih,
     deletePemilih,
-    deleteAllPemilih
+    deleteAllPemilih,
+    getPemilihByKandidat,
+    getPemilihByRelawan,
+    getPemilihByTPS
 };

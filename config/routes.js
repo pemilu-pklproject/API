@@ -23,7 +23,10 @@ const {
     getAllPemilih, 
     updatePemilih,
     deletePemilih,
-    deleteAllPemilih
+    deleteAllPemilih,
+    getPemilihByKandidat,
+    getPemilihByRelawan,
+    getPemilihByTPS
 } = require("../controller/pemilih");
 
 const { 
@@ -34,7 +37,8 @@ const {
     deleteTPS, 
     deleteAllTPS, 
     getTPSByDapil,
-    getTPSByWilayah
+    getTPSByWilayah,
+    getTPSByKandidat
 } = require("../controller/tps");
 
 const { 
@@ -80,7 +84,8 @@ const {
     insertAdmin, 
     getAllAdmin, 
     getAdminById,
-    updateAdmin
+    updateAdmin,
+    deleteAdmin
 } = require("../controller/admin");
 
 const { uploadImage } = require('../helper/image-handler');
@@ -95,14 +100,14 @@ module.exports = (app) =>{
     app.get(`${BASE_URL}/admin.json`, getAllAdmin)
     app.get(`${BASE_URL}/admin/:id.json`, getAdminById)
     app.put(`${BASE_URL}/admin/update/:id`, updateAdmin)
-    app.delete(`${BASE_URL}/admin/delete/:id`)
+    app.delete(`${BASE_URL}/admin/delete/:id`, deleteAdmin)
 
     //relawan
     app.post(`${BASE_URL}/login/relawan`, RelawanLogin)
     app.post(`${BASE_URL}/relawan/add`, insertRelawan)
-    app.get(`${BASE_URL}/relawan/:id`, getRelawanById)
-    app.get(`${BASE_URL}/relawan`, getAllRelawan)
-    app.get(`${BASE_URL}/relawan/data/:id_kandidat`, getRelawanByKandidat)
+    app.get(`${BASE_URL}/relawan/:id.json`, getRelawanById)
+    app.get(`${BASE_URL}/relawan.json`, getAllRelawan)
+    app.get(`${BASE_URL}/relawan/data/:id_kandidat.json`, getRelawanByKandidat)
     app.put(`${BASE_URL}/relawan/update/:id`, updateRelawan)
     app.delete(`${BASE_URL}/relawan/delete/:id`, deleteRelawan)
     app.delete(`${BASE_URL}/relawan/delete`, deleteAllRelawan)
@@ -118,18 +123,22 @@ module.exports = (app) =>{
 
     //pemilih
     app.post(`${BASE_URL}/pemilih/add`, insertPemilih)
-    app.get(`${BASE_URL}/pemilih/:id`, getPemilihById)
-    app.get(`${BASE_URL}/pemilih`, getAllPemilih)
+    app.get(`${BASE_URL}/pemilih/:id.json`, getPemilihById)
+    app.get(`${BASE_URL}/pemilih.json`, getAllPemilih)
+    app.get(`${BASE_URL}/kandidat/pemilih/:id_kandidat.json`, getPemilihByKandidat)
+    app.get(`${BASE_URL}/relawan/pemilih/:id_relawan.json`, getPemilihByRelawan)
+    app.get(`${BASE_URL}/pemilih/tps/:id_tps.json`, getPemilihByTPS)
     app.put(`${BASE_URL}/pemilih/update/:id`, updatePemilih)
     app.delete(`${BASE_URL}/pemilih/delete/:id`, deletePemilih)
     app.delete(`${BASE_URL}/pemilih/delete`, deleteAllPemilih)
 
     //tps
     app.post(`${BASE_URL}/tps/add`, insertTPS)
-    app.get(`${BASE_URL}/tps/:id`, getTPSById)
-    app.get(`${BASE_URL}/tps`, getAllTPS)
-    app.get(`${BASE_URL}/tps/:id_dapil.json`, getTPSByDapil)
-    app.get(`${BASE_URL}/tps/data/:id_wilayah`, getTPSByWilayah)
+    app.get(`${BASE_URL}/tps/:id.json`, getTPSById)
+    app.get(`${BASE_URL}/tps.json`, getAllTPS)
+    app.get(`${BASE_URL}/kandidat/tps/:id_kandidat`, getTPSByKandidat)
+    app.get(`${BASE_URL}/tps/dapil/:id_dapil.json`, getTPSByDapil)
+    app.get(`${BASE_URL}/tps/wilayah/:id_wilayah.json`, getTPSByWilayah)
     app.put(`${BASE_URL}/tps/update/:id`, updateTPS)
     app.delete(`${BASE_URL}/tps/delete/:id`, deleteTPS)
     app.delete(`${BASE_URL}/tps/delete`, deleteAllTPS)

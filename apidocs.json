@@ -21,19 +21,23 @@
       "description": ""
     },
     {
-      "name": "Categori",
+      "name": "Admin",
       "description": ""
     },
     {
-      "name": "Home",
+      "name": "Kandidat",
       "description": ""
     },
     {
-      "name": "Review",
+      "name": "Relawan",
       "description": ""
     },
     {
-      "name": "User",
+      "name": "Pemilih",
+      "description": ""
+    },
+    {
+      "name": "TPS",
       "description": ""
     }
   ],
@@ -123,7 +127,7 @@
                 "application/json": {
                   "example": {
                     "status": false,
-                    "msg": "username dan Password salah"
+                    "msg": "nik dan Password salah"
                   }
                 }
               }
@@ -171,7 +175,7 @@
                 "application/json": {
                   "example": {
                     "status": false,
-                    "msg": "email dan Password salah"
+                    "msg": "nik dan Password salah"
                   }
                 }
               }
@@ -192,7 +196,8 @@
             "content": {
               "application/json": {
                 "example": {
-                  "nik": "nik",
+                  "nama": "nama",
+                  "email":"email",
                   "passowrd": "password"
                 }
               }
@@ -205,10 +210,7 @@
                 "application/json": {
                   "example": {
                     "status": true,
-                    "id": "id",
-                    "nama": "nama",
-                    "access_token": "access_token",
-                    "refresh_token": "refresh_token"
+                    "msg":"data berhasil ditambahkan"
                   }
                 }
               }
@@ -219,7 +221,7 @@
                 "application/json": {
                   "example": {
                     "status": false,
-                    "msg": "email dan Password salah"
+                    "msg": "data gagal ditambahkan"
                   }
                 }
               }
@@ -229,7 +231,1533 @@
             }
           }
         }
+      },
+      "/si-pemilu/api/v1/kandidat/add": {
+        "post": {
+          "tags": ["Regis"],
+          "summary": "kandidat registrasi",
+          "description": "data kandidat yang akan di input",
+          "requestBody": {
+            "description": "Data yang dikirimkan",
+            "content": {
+              "application/json": {
+                "example": {
+                  "nama": "nama",
+                  "nik":"nik",
+                  "email":"email",
+                  "passowrd": "password",
+                  "jenis_kelamin": "jenis_kelamin",
+                  "partai": "partai",
+                  "id_dapil": "id_dapil",
+                  "no_urut": "no_urut",
+                  "id_jabatan": "id_jabatan",
+                  "id_admin": "id_admin",
+                  "id_wilayah": "id_wilayah"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": true,
+                    "msg":"data berhasil ditambahkan"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditambahkan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+      "/si-pemilu/api/v1/relawan/add": {
+        "post": {
+          "tags": ["Regis"],
+          "summary": "relawan registrasi",
+          "description": "data relawan yang akan di input",
+          "requestBody": {
+            "description": "Data yang dikirimkan",
+            "content": {
+              "application/json": {
+                "example": {
+                  "nama": "nama",
+                  "nik":"nik",
+                  "email":"email",
+                  "passowrd": "password",
+                  "jenis_kelamin": "jenis_kelamin",
+                  "no_hp": "no_hp",
+                  "id_kandidat": "id_kandidat",
+                  "isSaksi": "isSaksi",
+                  "isRelawan": "isRelawan"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": true,
+                    "msg":"data berhasil ditambahkan"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditambahkan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+      "/si-pemilu/api/v1/pemilih/add": {
+        "post": {
+          "tags": ["Regis"],
+          "summary": "pemilih registrasi",
+          "description": "data pemilih yang akan di input",
+          "requestBody": {
+            "description": "Data yang dikirimkan",
+            "content": {
+              "application/json": {
+                "example": {
+                  "nama": "nama",
+                  "nik":"nik",
+                  "email":"email",
+                  "jenis_kelamin": "jenis_kelamin",
+                  "no_hp": "no_hp",
+                  "id_kandidat": "id_kandidat",
+                  "id_relawan": "id_relawan",
+                  "id_tps": "id_tps"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": true,
+                    "msg":"data berhasil ditambahkan"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditambahkan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      
+      "/si-pemilu/api/v1/admin.json": {
+        "get": {
+          "tags": ["Admin"],
+          "summary": "get all admin",
+          "description": "menampilkan data admin",
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id":"id",
+                    "nama": "nama",
+                    "email":"email",
+                    "passowrd": "password"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/admin/{id}.json": {
+        "get": {
+          "tags": ["Admin"],
+          "summary": "get admin by id",
+          "description": "menampilkan data admin by id admin",
+          "operationId": "getAdminById",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id":"id",
+                    "nama": "nama",
+                    "email":"email",
+                    "passowrd": "password"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/admin/update/{id}": {
+        "put": {
+          "tags": ["Admin"],
+          "summary": "Memperbarui admin berdasarkan ID",
+          "operationId": "updateAdmin",
+          "requestBody": {
+            "description": "Data yang dikirimkan",
+            "content": {
+              "application/json": {
+                "example": {
+                  "nama": "nama",
+                  "email":"email",
+                  "passowrd": "password"
+                }
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "admin berhasil diperbarui",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "admin berhasil di perbarui" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/admin/delete/{id}": {
+        "delete": {
+          "tags": ["Admin"],
+          "summary": "menghapus admin berdasarkan ID",
+          "operationId": "deleteAdmin",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "admin berhasil dihapus",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "admin berhasil di hapus" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/kandidat.json": {
+        "get": {
+          "tags": ["Kandidat"],
+          "summary": "get all kandidat",
+          "description": "menampilkan data kandidat",
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": "id",
+                    "nama": "nama",
+                    "nik":"nik",
+                    "email":"email",
+                    "passowrd": "password",
+                    "jenis_kelamin": "jenis_kelamin",
+                    "partai": "partai",
+                    "id_dapil": "id_dapil",
+                    "no_urut": "no_urut",
+                    "id_jabatan": "id_jabatan",
+                    "id_admin": "id_admin",
+                    "id_wilayah": "id_wilayah"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/kandidat/{id}.json": {
+        "get": {
+          "tags": ["Kandidat"],
+          "summary": "get kandidat by id",
+          "description": "menampilkan data kandidat by id",
+          "operationId": "getKandidatById",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id":"id",
+                    "nama": "nama",
+                    "nik":"nik",
+                    "email":"email",
+                    "passowrd": "password",
+                    "jenis_kelamin": "jenis_kelamin",
+                    "partai": "partai",
+                    "id_dapil": "id_dapil",
+                    "no_urut": "no_urut",
+                    "id_jabatan": "id_jabatan",
+                    "id_admin": "id_admin",
+                    "id_wilayah": "id_wilayah"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/kandidat/update/{id}": {
+        "put": {
+          "tags": ["Kandidat"],
+          "summary": "Memperbarui kandidat berdasarkan ID",
+          "operationId": "updateKandidat",
+          "requestBody": {
+            "description": "Data yang dikirimkan",
+            "content": {
+              "application/json": {
+                "example": {
+                  "nama": "nama",
+                  "nik":"nik",
+                  "email":"email",
+                  "passowrd": "password",
+                  "jenis_kelamin": "jenis_kelamin",
+                  "partai": "partai",
+                  "id_dapil": "id_dapil",
+                  "no_urut": "no_urut",
+                  "id_jabatan": "id_jabatan",
+                  "id_admin": "id_admin",
+                  "id_wilayah": "id_wilayah"
+                }
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "admin berhasil diperbarui",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "admin berhasil di perbarui" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/kandidat/delete/{id}": {
+        "delete": {
+          "tags": ["Kandidat"],
+          "summary": "menghapus kandidat berdasarkan ID",
+          "operationId": "deleteKandidat",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "kandidat berhasil dihapus",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "kandidat berhasil di hapus" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/kandidat/delete": {
+        "delete": {
+          "tags": ["Kandidat"],
+          "summary": "menghapus semua kandidat",
+          "operationId": "deleteKandidat",
+          "responses": {
+            "200": {
+              "description": "data kandidat berhasil dihapus",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "data kandidat berhasil di hapus" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/pemilih.json": {
+        "get": {
+          "tags": ["Pemilih"],
+          "summary": "get all pemilih",
+          "description": "menampilkan data pemilih",
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "nama": "nama",
+                    "nik":"nik",
+                    "email":"email",
+                    "jenis_kelamin": "jenis_kelamin",
+                    "no_hp": "no_hp",
+                    "id_kandidat": "id_kandidat",
+                    "id_relawan": "id_relawan",
+                    "id_tps": "id_tps"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/pemilih/{id}.json": {
+        "get": {
+          "tags": ["Pemilih"],
+          "summary": "get pemilih by id",
+          "description": "menampilkan data pemilih by id",
+          "operationId": "getPemilihById",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "nama": "nama",
+                    "nik":"nik",
+                    "email":"email",
+                    "jenis_kelamin": "jenis_kelamin",
+                    "no_hp": "no_hp",
+                    "id_kandidat": "id_kandidat",
+                    "id_relawan": "id_relawan",
+                    "id_tps": "id_tps"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/kandidat/pemilih/{id_kandidat}.json": {
+        "get": {
+          "tags": ["Pemilih"],
+          "summary": "get pemilih by id kandidat",
+          "description": "menampilkan data pemilih by id kandidat",
+          "operationId": "getPemilihByIdkandidat",
+          "parameters": [
+            {
+              "name": "id_kandidat",
+              "in": "path",
+              "description": "id kandidat",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "nama": "nama",
+                    "nik":"nik",
+                    "email":"email",
+                    "jenis_kelamin": "jenis_kelamin",
+                    "no_hp": "no_hp",
+                    "id_kandidat": "id_kandidat",
+                    "id_relawan": "id_relawan",
+                    "id_tps": "id_tps"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/relawan/pemilih/{id_relawan}.json": {
+        "get": {
+          "tags": ["Pemilih"],
+          "summary": "get pemilih by id relawan",
+          "description": "menampilkan data pemilih by id relawan",
+          "operationId": "getPemilihByIdRelawan",
+          "parameters": [
+            {
+              "name": "id_relawan",
+              "in": "path",
+              "description": "id relawan",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "nama": "nama",
+                    "nik":"nik",
+                    "email":"email",
+                    "jenis_kelamin": "jenis_kelamin",
+                    "no_hp": "no_hp",
+                    "id_kandidat": "id_kandidat",
+                    "id_relawan": "id_relawan",
+                    "id_tps": "id_tps"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/pemilih/tps/{id_tps}.json": {
+        "get": {
+          "tags": ["Pemilih"],
+          "summary": "get pemilih by id tps",
+          "description": "menampilkan data pemilih by id tps",
+          "operationId": "getPemilihByIdRelawan",
+          "parameters": [
+            {
+              "name": "id_tps",
+              "in": "path",
+              "description": "id tps",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "nama": "nama",
+                    "nik":"nik",
+                    "email":"email",
+                    "jenis_kelamin": "jenis_kelamin",
+                    "no_hp": "no_hp",
+                    "id_kandidat": "id_kandidat",
+                    "id_relawan": "id_relawan",
+                    "id_tps": "id_tps"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/pemilih/update/{id}": {
+        "put": {
+          "tags": ["Pemilih"],
+          "summary": "Memperbarui pemilih berdasarkan ID",
+          "operationId": "updatePemilih",
+          "requestBody": {
+            "description": "Data yang dikirimkan",
+            "content": {
+              "application/json": {
+                "example": {
+                  "nama": "nama",
+                  "nik":"nik",
+                  "email":"email",
+                  "jenis_kelamin": "jenis_kelamin",
+                  "no_hp": "no_hp",
+                  "id_kandidat": "id_kandidat",
+                  "id_relawan": "id_relawan",
+                  "id_tps": "id_tps"
+                }
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "pemilih berhasil diperbarui",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "pemilih berhasil di perbarui" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/pemilih/delete/{id}": {
+        "delete": {
+          "tags": ["Pemilih"],
+          "summary": "menghapus pemilih berdasarkan ID",
+          "operationId": "deletePemilih",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "pemilih berhasil dihapus",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "pemilih berhasil di hapus" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/pemilih/delete": {
+        "delete": {
+          "tags": ["Pemilih"],
+          "summary": "menghapus semua pemilih",
+          "operationId": "deleteAllRelawan",
+          "responses": {
+            "200": {
+              "description": "data pemilih berhasil dihapus",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "data pemilih berhasil di hapus" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/relawan.json": {
+        "get": {
+          "tags": ["Relawan"],
+          "summary": "get all relawan",
+          "description": "menampilkan data relawan",
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "nama": "nama",
+                    "nik":"nik",
+                    "email":"email",
+                    "passowrd": "password",
+                    "jenis_kelamin": "jenis_kelamin",
+                    "no_hp": "no_hp",
+                    "id_kandidat": "id_kandidat",
+                    "isSaksi": "isSaksi",
+                    "isRelawan": "isRelawan"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/relawan/{id}.json": {
+        "get": {
+          "tags": ["Relawan"],
+          "summary": "get relawan by id",
+          "description": "menampilkan data relawan by id",
+          "operationId": "getRelawanById",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "nama": "nama",
+                    "nik":"nik",
+                    "email":"email",
+                    "passowrd": "password",
+                    "jenis_kelamin": "jenis_kelamin",
+                    "no_hp": "no_hp",
+                    "id_kandidat": "id_kandidat",
+                    "isSaksi": "isSaksi",
+                    "isRelawan": "isRelawan"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/relawan/data/{id_kandidat}.json": {
+        "get": {
+          "tags": ["Relawan"],
+          "summary": "get relawan by id kandidat",
+          "description": "menampilkan data relawan by id kandidat",
+          "operationId": "getRelawanByIdKandidat",
+          "parameters": [
+            {
+              "name": "id_kandidat",
+              "in": "path",
+              "description": "id kandidat",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "nama": "nama",
+                    "nik":"nik",
+                    "email":"email",
+                    "passowrd": "password",
+                    "jenis_kelamin": "jenis_kelamin",
+                    "no_hp": "no_hp",
+                    "id_kandidat": "id_kandidat",
+                    "isSaksi": "isSaksi",
+                    "isRelawan": "isRelawan"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/relawan/update/{id}": {
+        "put": {
+          "tags": ["Relawan"],
+          "summary": "Memperbarui relawan berdasarkan ID",
+          "operationId": "updateRelawan",
+          "requestBody": {
+            "description": "Data yang dikirimkan",
+            "content": {
+              "application/json": {
+                "example": {
+                  "nama": "nama",
+                  "nik":"nik",
+                  "email":"email",
+                  "passowrd": "password",
+                  "jenis_kelamin": "jenis_kelamin",
+                  "no_hp": "no_hp",
+                  "id_kandidat": "id_kandidat",
+                  "isSaksi": "isSaksi",
+                  "isRelawan": "isRelawan"
+                }
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "relawan berhasil diperbarui",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "relawan berhasil di perbarui" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/relawan/delete/{id}": {
+        "delete": {
+          "tags": ["Relawan"],
+          "summary": "menghapus relawan berdasarkan ID",
+          "operationId": "deleteRelawan",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "relawan berhasil dihapus",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "relawan berhasil di hapus" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/relawan/delete": {
+        "delete": {
+          "tags": ["Relawan"],
+          "summary": "menghapus semua relawan",
+          "operationId": "deleteAllRelawan",
+          "responses": {
+            "200": {
+              "description": "data relawan berhasil dihapus",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "data relawan berhasil di hapus" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/tps/add": {
+      "post": {
+        "tags": ["TPS"],
+        "summary": "input TPS",
+        "description": "buat data tps",
+        "requestBody": {
+          "description": "Data yang dikirimkan",
+          "content": {
+            "application/json": {
+              "example": {
+                "id_dapil":null,
+                "id_wilayah":"11.12.09",
+                "nomor":"12",
+                "id_saksi":"2",
+                "id_kandidat":"3"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sukses",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id_dapil":null,
+                  "id_wilayah":"11.12.09",
+                  "nomor":"12",
+                  "id_saksi":"2",
+                  "id_kandidat":"3"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": false,
+                  "msg": "gagal input data"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
       }
+      },
+
+      "/si-pemilu/api/v1/tps.json": {
+        "get": {
+          "tags": ["TPS"],
+          "summary": "get all TPS",
+          "description": "menampilkan data TPS",
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id_dapil":null,
+                    "id_wilayah":"11.12.09",
+                    "nomor":"12",
+                    "id_saksi":"2",
+                    "id_kandidat":"3"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/tps/{id}.json": {
+        "get": {
+          "tags": ["TPS"],
+          "summary": "get TPS by id",
+          "description": "menampilkan data TPS by id",
+          "operationId": "getTPSById",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id_dapil":null,
+                    "id_wilayah":"11.12.09",
+                    "nomor":"12",
+                    "id_saksi":"2",
+                    "id_kandidat":"3"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/kandidat/tps/{id_kandidat}": {
+        "get": {
+          "tags": ["TPS"],
+          "summary": "get TPS by id kandidat",
+          "description": "menampilkan data TPS by id kandidat",
+          "operationId": "getTPSByIdKandidat",
+          "parameters": [
+            {
+              "name": "id_kandidat",
+              "in": "path",
+              "description": "id kandidat",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id_dapil":null,
+                    "id_wilayah":"11.12.09",
+                    "nomor":"12",
+                    "id_saksi":"2",
+                    "id_kandidat":"3"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/tps/dapil/{id_dapil}.json": {
+        "get": {
+          "tags": ["TPS"],
+          "summary": "get TPS by id dapil",
+          "description": "menampilkan data TPS by id dapil",
+          "operationId": "getTPSByIdDapil",
+          "parameters": [
+            {
+              "name": "id_dapil",
+              "in": "path",
+              "description": "id dapil",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id_dapil":null,
+                    "id_wilayah":"11.12.09",
+                    "nomor":"12",
+                    "id_saksi":"2",
+                    "id_kandidat":"3"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/tps/wilayah/{id_wilayah}.json": {
+        "get": {
+          "tags": ["TPS"],
+          "summary": "get TPS by id wilayah",
+          "description": "menampilkan data TPS by id wilayah",
+          "operationId": "getTPSByWilayah",
+          "parameters": [
+            {
+              "name": "id_wilayah",
+              "in": "path",
+              "description": "id wilayah",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id_dapil":null,
+                    "id_wilayah":"11.12.09",
+                    "nomor":"12",
+                    "id_saksi":"2",
+                    "id_kandidat":"3"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/tps/update/{id}": {
+        "put": {
+          "tags": ["TPS"],
+          "summary": "Memperbarui tps berdasarkan ID",
+          "operationId": "updateTPS",
+          "requestBody": {
+            "description": "Data yang dikirimkan",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id_dapil":null,
+                  "id_wilayah":"11.12.09",
+                  "nomor":"12",
+                  "id_saksi":"2",
+                  "id_kandidat":"3"
+                }
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "relawan berhasil diperbarui",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "tps berhasil di perbarui" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/tps/delete/{id}": {
+        "delete": {
+          "tags": ["TPS"],
+          "summary": "menghapus tps berdasarkan ID",
+          "operationId": "deleteTPS",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "relawan berhasil dihapus",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "tps berhasil di hapus" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/tps/delete": {
+        "delete": {
+          "tags": ["TPS"],
+          "summary": "menghapus semua TPS",
+          "operationId": "deleteAllTPS",
+          "responses": {
+            "200": {
+              "description": "data TPS berhasil dihapus",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "data TPS berhasil di hapus" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      }
+
     }
   }
+
   

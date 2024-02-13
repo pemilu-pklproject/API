@@ -44,6 +44,24 @@ const getTPSById = async (req, res) => {
         })
 };
 
+//get tps by id kandidat
+const getTPSByKandidat = async (req, res) => {
+    const kandidat = req.params.id_kandidat
+    TPS
+        .findAll({ where: { id_kandidat: kandidat } })
+        .then((data) => {
+            if(data.length == 0) {
+                return res.status(404).json({status: false, message: "id TPS not found"})}
+            res.json(data)
+        })
+        .catch(err => {
+            console.log(err)
+            res.statusCode = 500
+            res.send("Server Error")
+        })
+};
+
+
 //get TPS by dapil
 const getTPSByDapil = async (req, res) => {
     TPS
@@ -121,5 +139,6 @@ module.exports = {
     deleteTPS,
     deleteAllTPS,
     getTPSByDapil,
-    getTPSByWilayah
+    getTPSByWilayah,
+    getTPSByKandidat
 };

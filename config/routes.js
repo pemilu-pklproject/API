@@ -146,16 +146,13 @@ module.exports = (app) =>{
 
     //hasil suara
     app.post(`${BASE_URL}/hasil-suara/add`, uploadImage, insertHasilSuara)
-    app.get(`${BASE_URL}/hasil-suara/:id`, getHasilSuaraById)
-    app.get(`${BASE_URL}/hasil-suara`, getAllHasilSuara)
+    app.get(`${BASE_URL}/hasil-suara/:id.json`, getHasilSuaraById)
+    app.get(`${BASE_URL}/hasil-suara.json`, getAllHasilSuara)
     app.put(`${BASE_URL}/hasil-suara/update/:id`, updateHasilSuara)
     app.delete(`${BASE_URL}/hasil-suara/delete/:id`, deleteHasilSuara)
     app.delete(`${BASE_URL}/hasil-suara/delete`, deletAllHasilSuara)
 
     //login
-    app.post(`${BASE_URL}/login/admin`, authLogin)
-    app.post(`${BASE_URL}/login/kandidat`, kandidatLogin)
-    app.post(`${BASE_URL}/login/relawan`, RelawanLogin)
     // app.post(`/regis/admin`, AdminRegister)
 
     //wilayah

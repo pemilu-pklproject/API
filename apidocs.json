@@ -39,6 +39,10 @@
     {
       "name": "TPS",
       "description": ""
+    },
+    {
+      "name": "Hasil_suara",
+      "description": ""
     }
   ],
     "paths": {
@@ -1747,6 +1751,240 @@
               "content": {
                 "application/json": {
                   "example": { "status": true, "msg": "data TPS berhasil di hapus" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+      
+      "/si-pemilu/api/v1/hasil-suara/add": {
+        "post": {
+          "tags": ["Hasil_suara"],
+          "summary": "input hasil suara",
+          "description": "buat data hasil suara",
+          "requestBody": {
+            "description": "Data yang dikirimkan",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id_tps":2,
+                  "id_kandidat":3,
+                  "dokumen":"gambar.jpg",
+                  "total":23
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id_tps":2,
+                    "id_kandidat":3,
+                    "dokumen":"gambar.jpg",
+                    "total":23
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "gagal input data"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+        },
+
+      "/si-pemilu/api/v1/hasil-suara.json": {
+        "get": {
+          "tags": ["Hasil_suara"],
+          "summary": "get all hasil suara",
+          "description": "menampilkan data suara",
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id_tps":2,
+                    "id_kandidat":3,
+                    "dokumen":"gambar.jpg",
+                    "total":23
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/hasil-suara/{id}.json": {
+        "get": {
+          "tags": ["Hasil_suara"],
+          "summary": "get hasil suara by id",
+          "description": "menampilkan data hasil suara by id",
+          "operationId": "getHasilSuaraById",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id_tps":2,
+                    "id_kandidat":3,
+                    "dokumen":"gambar.jpg",
+                    "total":23
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/hasil-suara/update/{id}": {
+        "put": {
+          "tags": ["Hasil_suara"],
+          "summary": "Memperbarui hasil suara berdasarkan ID",
+          "operationId": "updateHasilSuara",
+          "requestBody": {
+            "description": "Data yang dikirimkan",
+            "content": {
+              "application/json": {
+                "example": {
+                    "id_tps":2,
+                    "id_kandidat":3,
+                    "dokumen":"gambar.jpg",
+                    "total":23
+                }
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "hasil suara berhasil diperbarui",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "suara berhasil di perbarui" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/hasil-suara/delete/{id}": {
+        "delete": {
+          "tags": ["Hasil_suara"],
+          "summary": "menghapus hasil suara berdasarkan ID",
+          "operationId": "deleteHasilSuara",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "hasil suara berhasil dihapus",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "hasil suara berhasil di hapus" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/hasil-suara/delete": {
+        "delete": {
+          "tags": ["Hasil_suara"],
+          "summary": "menghapus semua hasil suara",
+          "operationId": "deleteAllHasilSuara",
+          "responses": {
+            "200": {
+              "description": "data hasil suara berhasil dihapus",
+              "content": {
+                "application/json": {
+                  "example": { "status": true, "msg": "data suara berhasil di hapus" }
                 }
               }
             },

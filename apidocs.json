@@ -2132,7 +2132,7 @@
           }
         }
       },
-      "/si-pemilu/api/v1/dapil/{id_jabatan}/{kode_dapil}.json": {
+      "/si-pemilu/api/v1/dapil/{id_jabatan}/{kode_wilayah}.json": {
         "get": {
           "tags": ["Dapil"],
           "summary": "get jabatan by id jabatan and kode dapil",

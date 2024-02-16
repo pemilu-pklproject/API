@@ -3,7 +3,7 @@ const { Op, Sequelize } = require('sequelize');
 
 const getAllDapil = async (req, res) => {
     const id_jabatan = req.params.id_jabatan;
-    const id_dapil = req.params.kode_dapil;
+    const id_dapil = req.params.kode_wilayah;
     const prefix = id_dapil.toString().substring(0, 2);
 
     try {

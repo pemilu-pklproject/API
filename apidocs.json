@@ -1269,6 +1269,60 @@
         }
       },
 
+      "/si-pemilu/api/v1/relawan/saksi/{id_kandidat}.json": {
+        "get": {
+          "tags": ["Relawan"],
+          "summary": "get saksi by id kandidat",
+          "description": "menampilkan data saksi by id kandidat",
+          "operationId": "getSaksiByIdKandidat",
+          "parameters": [
+            {
+              "name": "id_kandidat",
+              "in": "path",
+              "description": "id kandidat",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "nama": "nama",
+                    "nik":"nik",
+                    "email":"email",
+                    "passowrd": "password",
+                    "jenis_kelamin": "jenis_kelamin",
+                    "no_hp": "no_hp",
+                    "id_kandidat": "id_kandidat",
+                    "isSaksi": "isSaksi",
+                    "isRelawan": "isRelawan"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
       "/si-pemilu/api/v1/relawan/update/{id}": {
         "put": {
           "tags": ["Relawan"],

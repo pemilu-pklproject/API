@@ -43,6 +43,18 @@
     {
       "name": "Hasil_suara",
       "description": ""
+    },
+    {
+      "name": "Jabatan",
+      "description":""
+    },
+    {
+      "name": "Dapil",
+      "description":""
+    },
+    {
+      "name": "Wilayah",
+      "description":""
     }
   ],
     "paths": {
@@ -2039,6 +2051,498 @@
               "content": {
                 "application/json": {
                   "example": { "status": true, "msg": "data suara berhasil di hapus" }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/calon-jabatan.json": {
+        "get": {
+          "tags": ["Jabatan"],
+          "summary": "get all jabatan",
+          "description": "menampilkan data list jabatan",
+          "operationId": "get all jabatan",
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": 2,
+                    "Jabatan": "DPR RI"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/calon-jabatan/{id}.json": {
+        "get": {
+          "tags": ["Jabatan"],
+          "summary": "get jabatan by id jabatan",
+          "description": "menampilkan data jabatan by id",
+          "operationId": "getJabatanById",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id jabatan",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": 2,
+                    "Jabatan": "DPR RI"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+      "/si-pemilu/api/v1/dapil/{id_jabatan}/{kode_dapil}.json": {
+        "get": {
+          "tags": ["Dapil"],
+          "summary": "get jabatan by id jabatan and kode dapil",
+          "description": "menampilkan data dapil",
+          "operationId": "getDapilByJabatanWilayah",
+          "parameters": [
+            {
+              "name": "id_jabatan",
+              "in": "path",
+              "description": "id jabatan",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "kode_dapil",
+              "in": "path",
+              "description": "kode dapil",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                      "id": 1,
+                      "kode_dapil": "1101",
+                      "jenis_dapil": "DPR RI",
+                      "nama_dapil": "ACEH I",
+                      "kode_wilayah": "1101",
+                      "tingkatan_wilayah": "Kabupaten/Kota",
+                      "nama": "ACEH SELATAN"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/dapil/{id}.json": {
+        "get": {
+          "tags": ["Dapil"],
+          "summary": "get dapil by id",
+          "description": "menampilkan data dapil by id",
+          "operationId": "getDapilById",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id dapil",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                      "id": 1,
+                      "kode_dapil": "1101",
+                      "jenis_dapil": "DPR RI",
+                      "nama_dapil": "ACEH I",
+                      "kode_wilayah": "1101",
+                      "tingkatan_wilayah": "Kabupaten/Kota",
+                      "nama": "ACEH SELATAN"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/wilayah/provinsi.json": {
+        "get": {
+          "tags": ["Wilayah"],
+          "summary": "Get all provinces",
+          "description": "meminta all provinces data",
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "example": 
+                    {
+                      "id": 1,
+                      "kode": "11",
+                      "nama": "ACEH"
+                    }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+    
+      "/si-pemilu/api/v1/wilayah/provinsi/{id}.json": {
+        "get": {
+          "tags": ["Wilayah"],
+          "summary": "Get province by ID",
+          "description": "meminta province data by ID",
+          "operationId": "getProvinsiById",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Province ID",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": 1,
+                      "kode": "11",
+                      "nama": "ACEH"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "Data not found"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/wilayah/kabupaten-kota/{id_provinsi}.json": {
+        "get": {
+          "tags": ["Wilayah"],
+          "summary": "Get all kabupaten",
+          "description": "meminta all kabupaten kota data",
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "example": {
+                      "id": 1,
+                      "kode": "12.02",
+                      "name": "KAB. ASAHAN"
+                    }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+    
+      "/si-pemilu/api/v1/wilayah/kabupaten-kota/{id}.json": {
+        "get": {
+          "tags": ["Wilayah"],
+          "summary": "Get kabupaten kota by ID",
+          "description": "Retrieve kabupaten kota data by ID",
+          "operationId": "getKabupatenById",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "kabupaten kota ID",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": 1,
+                      "kode": "12.02",
+                      "name": "KAB. ASAHAN"
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "Data not found"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      }
+      },
+    
+      "/si-pemilu/api/v1/wilayah/kecamatan/{id_kab_kota}.json": {
+        "get": {
+          "tags": ["Wilayah"],
+          "summary": "Get all kecamatan",
+          "description": "Retrieve all kecamatan data",
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "example": 
+                    {
+                      "id": 1,
+                      "kode": "12.05.80",
+                      "nama": "Panca Arga"
+                    }
+                  
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/wilayah/kecamatan/{id}.json": {
+        "get": {
+          "tags": ["Wilayah"],
+          "summary": "Get kecamatan by ID",
+          "description": "Retrieve kecamatan data by ID",
+          "operationId": "getKecamatanById",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "kecamatan ID",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": 1,
+                      "kode": "12.05.80",
+                      "nama": "Panca Arga"
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "Data not found"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      }
+      },
+
+      "/si-pemilu/api/v1/wilayah/kelurahan-desa/{id_kecamatan}.json": {
+        "get": {
+          "tags": ["Wilayah"],
+          "summary": "Get all desa kelurahan",
+          "description": "meminta all desa data",
+          "parameters": [
+            {
+              "name": "id_kecamatan",
+              "in": "path",
+              "description": "desa ID",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "example": [
+                    {
+                      "id": 1,
+                      "kode": "12.09.06.2003",
+                      "name": "Rawang Lama"
+                    }
+                  ]
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+    
+      "/si-pemilu/api/v1/wilayah/kelurahan-desa/{id}.json": {
+        "get": {
+          "tags": ["Wilayah"],
+          "summary": "Get desa by ID",
+          "description": "meminta village data by ID",
+          "operationId": "getDesaById",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "desa ID",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": 1,
+                      "kode": "12.09.06.2003",
+                      "name": "Rawang Lama"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "Data not found"
+                  }
                 }
               }
             },

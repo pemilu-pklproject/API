@@ -168,7 +168,7 @@ module.exports = (app) =>{
     app.get(`${BASE_URL}/wilayah/kelurahan-desa/:id`, getDesaById)
 
     //dapil
-    app.get(`${BASE_URL}/dapil/:id_jabatan/:id_wilayah.json`, getAllDapil)
+    app.get(`${BASE_URL}/dapil/:id_jabatan/:kode_dapil.json`, getAllDapil)
     app.get(`${BASE_URL}/dapil/:id`, getDapilById)
 
     //jabatan

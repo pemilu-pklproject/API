@@ -24,6 +24,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id_kandidat',
         targetKey: 'id',
         as: 'tps-kandidat'
+      });
+      this.belongsTo(models.Relawan, {
+        foreignKey: 'id_saksi',
+        targetKey:'id',
+        as: 'saksi'
       })
     }
   }

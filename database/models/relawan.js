@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id_kandidat',
         targetKey: 'id',
         as: 'candidate'
+      });
+      this.hasOne(models.TPS, {
+        foreignKey: 'id_saksi',
+        sourceKey: 'id',
+        as: 'saksi'
       })
     }
     

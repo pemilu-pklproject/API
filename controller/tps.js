@@ -1,4 +1,5 @@
-const { TPS, Dapil } = require("../database/models")
+const { TPS, Dapil, Relawan, Wilayah } = require("../database/models");
+const wilayah = require("../database/models/wilayah");
 
 //insert TPS
 const insertTPS = async (req, res) => {
@@ -36,6 +37,18 @@ const getTPSAll = async (req, res) =>{
                 model: Dapil,
                 as: 'tps-dapil',
                 attributes: ['nama']
+            },
+            {
+                model: Wilayah,
+                as:'tps-wilayah',
+                attributes:['nama']
+
+            },
+            {
+                model: Relawan,
+                as:'saksi',
+                attributes:['nama']
+
             }
         ]
     })

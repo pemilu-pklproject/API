@@ -1,4 +1,4 @@
-const { Kandidat, Calon_jabatan, Wilayah, Dapil } = require("../database/models")
+const { Kandidat, Calon_jabatan, Wilayah, Dapil, Super_admin } = require("../database/models")
 const { decrypt, encrypt } = require('../helper/bcrypt');
 const model = require("../database/config/index")
 //insert kandidat
@@ -31,7 +31,11 @@ const getKandidatAll = async (req,res) =>{
                 },
                 {
                     model: Dapil,
-                    as: 'dapil'
+                    as: 'kandidat-dapil'
+                },
+                {
+                    model: Super_admin,
+                    as: 'admin'
                 }
             ]
         })
@@ -63,7 +67,30 @@ const getAllKandidat = async (req,res) =>{
 //get kandidat by Id
 const getKandidatById = async (req, res) => {
     Kandidat
-        .findAll({ where: { id: req.params.id } })
+        .findAll({ 
+            where: 
+            { 
+                id: req.params.id 
+            },
+            include:[
+                {
+                    model : Calon_jabatan,
+                    as: 'jabatan'
+                },
+                {
+                    model: Wilayah,
+                    as: 'wilayah'
+                },
+                {
+                    model: Dapil,
+                    as: 'kandidat-dapil'
+                },
+                {
+                    model: Super_admin,
+                    as: 'admin'
+                }
+            ] 
+        })
         .then((data) => {
             if(data.length == 0) {
                 return res.status(404).json({status: false, message: "id kandidat not found"})}

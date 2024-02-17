@@ -14,6 +14,21 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id_jabatan',
         targetKey: 'id',
         as: "jabatan"
+      });
+      this.belongsTo(models.Wilayah, {
+        foreignKey: 'id_wilayah',
+        targetKey: 'id',
+        as: 'wilayah'
+      });
+      this.belongsTo(models.Dapil, {
+        foreignKey: 'id_dapil',
+        targetKey:'id',
+        as: 'dapil'
+      });
+      this.hasMany(models.Pemilih, {
+        foreignKey: 'id_kandidat',
+        sourceKey: 'id',
+        as: 'kandidat'
       })
     }
     

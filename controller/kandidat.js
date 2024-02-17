@@ -1,4 +1,4 @@
-const { Kandidat, Calon_jabatan } = require("../database/models")
+const { Kandidat, Calon_jabatan, Wilayah, Dapil } = require("../database/models")
 const { decrypt, encrypt } = require('../helper/bcrypt');
 const model = require("../database/config/index")
 //insert kandidat
@@ -20,11 +20,20 @@ const insertKandidat = async (req, res) => {
 const getKandidatAll = async (req,res) =>{
     Kandidat
         .findAll({
-            include:
-                { 
+            include:[
+                {
                     model : Calon_jabatan,
                     as: 'jabatan'
+                },
+                {
+                    model: Wilayah,
+                    as: 'wilayah'
+                },
+                {
+                    model: Dapil,
+                    as: 'dapil'
                 }
+            ]
         })
         .then((datas)=>{
             res.status=true

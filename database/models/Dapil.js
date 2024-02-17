@@ -10,7 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-
+      this.hasMany(models.Kandidat,{
+        foreignKey:'id_dapil',
+        sourceKey: 'id',
+        as: 'dapil'
+        
+      })
     }
   }
   Data_dapil.init({

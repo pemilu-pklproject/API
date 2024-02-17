@@ -1,4 +1,4 @@
-const { TPS } = require("../database/models")
+const { TPS, Dapil } = require("../database/models")
 
 //insert TPS
 const insertTPS = async (req, res) => {
@@ -28,10 +28,45 @@ const getAllTPS = async (req, res) =>{
     })
 };
 
+const getTPSAll = async (req, res) =>{
+    TPS
+    .findAll({
+        include: [
+            {
+                model: Dapil,
+                as: 'tps-dapil',
+                attributes: ['nama']
+            }
+        ]
+    })
+    .then((datas)=>{
+        res.status=true
+        res.json(datas)
+    })
+    .catch(err =>{
+        console.log(err)
+        res.status=500
+        res.send("server error")
+    })
+};
+
+
 //get TPS by Id
 const getTPSById = async (req, res) => {
     TPS
-        .findAll({ where: { id: req.params.id } })
+        .findAll({ 
+            where: 
+            { 
+                id: req.params.id 
+            },
+            include: [
+                {
+                    model: Dapil,
+                    as: 'tps-dapil',
+                    attributes: ['nama']
+                }
+            ]
+        })
         .then((data) => {
             if(data.length == 0) {
                 return res.status(404).json({status: false, message: "id TPS not found"})}
@@ -65,7 +100,7 @@ const getTPSByKandidat = async (req, res) => {
 //get TPS by dapil
 const getTPSByDapil = async (req, res) => {
     TPS
-        .findAll({ where: { id_dapil : req.params.id_dapil } })
+        .findAll({ where: { kode_dapil : req.params.kode_dapil } })
         .then((data) => {
             if(data.length == 0) {
                 return res.status(404).json({status: false, message: "id TPS not found"})}

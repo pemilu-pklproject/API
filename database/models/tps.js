@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.Dapil,{
-        foreignKey: 'id_dapil',
-        targetKey: 'id',
+        foreignKey: 'kode_dapil',
+        targetKey: 'kode_dapil',
         as: 'tps-dapil'
       });
       this.belongsTo(models.Wilayah, {

@@ -5,6 +5,7 @@ const {
     updateKandidat,
     deleteKandidat,
     deletAllKandidat,
+    getKandidatAll,
 } = require("../controller/kandidat")
 
 const { 
@@ -119,6 +120,7 @@ module.exports = (app) =>{
     app.post(`${BASE_URL}/kandidat/add`, insertKandidat)
     app.get(`${BASE_URL}/kandidat/:id.json`, getKandidatById)
     app.get(`${BASE_URL}/kandidat.json`, getAllKandidat)
+    app.get(`${BASE_URL}/kandidat/data.json`, getKandidatAll)
     app.put(`${BASE_URL}/kandidat/update/:id`, updateKandidat)
     app.delete(`${BASE_URL}/kandidat/delete/:id`, deleteKandidat)
     app.delete(`${BASE_URL}/kandidat/delete`, deletAllKandidat)

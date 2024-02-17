@@ -614,6 +614,55 @@
         }
       },
 
+      "/si-pemilu/api/v1/kandidat/data.json": {
+        "get": {
+          "tags": ["Kandidat"],
+          "summary": "get all kandidat (dengan inner join)",
+          "description": "menampilkan data kandidat",
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": "id",
+                    "nama": "nama",
+                    "nik":"nik",
+                    "email":"email",
+                    "passowrd": "password",
+                    "jenis_kelamin": "jenis_kelamin",
+                    "partai": "partai",
+                    "id_dapil": "id_dapil",
+                    "no_urut": "no_urut",
+                    "id_jabatan": "id_jabatan",
+                    "id_admin": "id_admin",
+                    "id_wilayah": "id_wilayah",
+                    "jabatan":{
+                      "id":"id",
+                      "jabatan":"jabatan"
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
       "/si-pemilu/api/v1/kandidat/{id}.json": {
         "get": {
           "tags": ["Kandidat"],

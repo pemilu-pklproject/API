@@ -16,8 +16,8 @@ const insertKandidat = async (req, res) => {
         })
 };
 
-//getAllKandidat
-const getAllKandidat = async (req,res) =>{
+//get all kandidat (versi inner join)
+const getKandidatAll = async (req,res) =>{
     Kandidat
         .findAll({
             include:
@@ -26,6 +26,20 @@ const getAllKandidat = async (req,res) =>{
                     as: 'jabatan'
                 }
         })
+        .then((datas)=>{
+            res.status=true
+            res.json(datas)
+        })
+        .catch(err =>{
+            console.log(err)
+            res.status=500
+            res.send("server error")
+        })
+}
+
+const getAllKandidat = async (req,res) =>{
+    Kandidat
+        .findAll()
         .then((datas)=>{
             res.status=true
             res.json(datas)
@@ -96,5 +110,6 @@ module.exports = {
     getKandidatById,
     updateKandidat,
     deleteKandidat,
-    deletAllKandidat
+    deletAllKandidat,
+    getKandidatAll
 }

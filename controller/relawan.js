@@ -93,7 +93,17 @@ const getSaksiByKandidat = async (req, res) =>{
 //get Relawan by Id
 const getRelawanById = async (req, res) => {
     Relawan
-        .findAll({ where: { id: req.params.id } })
+        .findAll({ 
+            where: 
+            { id: req.params.id 
+            },
+            include: [
+                {
+                    model: Kandidat,
+                    as: 'candidate'
+                }
+            ]
+         })
         .then((data) => {
             if(data.length == 0) {
                 return res.status(404).json({status: false, message: "id relawan not found"})}

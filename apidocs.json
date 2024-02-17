@@ -1236,6 +1236,62 @@
         }
       },
 
+      "/si-pemilu/api/v1/data/relawan.json": {
+        "get": {
+          "tags": ["Relawan"],
+          "summary": "get all relawan (versi inner join)",
+          "description": "menampilkan data relawan",
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "nama": "nama",
+                    "nik":"nik",
+                    "email":"email",
+                    "passowrd": "password",
+                    "jenis_kelamin": "jenis_kelamin",
+                    "no_hp": "no_hp",
+                    "id_kandidat": "id_kandidat",
+                    "isSaksi": "isSaksi",
+                    "isRelawan": "isRelawan",
+                    "candidate": {
+                      "id": 6,
+                      "nama": "ilham",
+                      "nik": "12131313131",
+                      "email": "@ilham",
+                      "password": "$2b$10$fUZKf2wzBvG4e3aPCV5yweY5/YxjHfB15vYsyQpWMLp20qR91gUKK",
+                      "jenis_kelamin": "pria",
+                      "partai": "golkar",
+                      "id_dapil": 2,
+                      "no_urut": "3",
+                      "id_jabatan": 2,
+                      "id_admin": 1,
+                      "id_wilayah": 4
+                  }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
       "/si-pemilu/api/v1/relawan/{id}.json": {
         "get": {
           "tags": ["Relawan"],

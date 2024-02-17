@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
         as: 'wilayah'
       });
       this.belongsTo(models.Dapil, {
-        foreignKey: 'id_dapil',
-        targetKey:'id',
+        foreignKey: 'kode_dapil',
+        targetKey:'kode_dapil',
         as: 'kandidat-dapil'
       });
       this.hasMany(models.Relawan, {
@@ -55,11 +55,11 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     jenis_kelamin: DataTypes.ENUM("pria","wanita"),
     partai: DataTypes.STRING,
-    id_dapil: DataTypes.INTEGER,
+    kode_dapil: DataTypes.STRING,
     no_urut: DataTypes.STRING,
     id_jabatan: DataTypes.INTEGER,
     id_admin: DataTypes.INTEGER,
-    id_wilayah: DataTypes.INTEGER
+    kode_wilayah: DataTypes.STRING
   }, {
     sequelize,
     timestamps: false,

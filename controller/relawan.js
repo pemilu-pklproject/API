@@ -38,7 +38,8 @@ const getRelawanAll = async (req, res) =>{
         include: [
             {
                 model: Kandidat,
-                as: 'candidate'
+                as: 'candidate',
+                attributes: ['nama']
             }
         ]
     })
@@ -100,7 +101,8 @@ const getRelawanById = async (req, res) => {
             include: [
                 {
                     model: Kandidat,
-                    as: 'candidate'
+                    as: 'candidate',
+                    attributes: ['nama']
                 }
             ]
          })

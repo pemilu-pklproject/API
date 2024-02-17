@@ -11,13 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.hasMany(models.Kandidat,{
-        foreignKey:'id_dapil',
-        sourceKey: 'id',
+        foreignKey:'kode_dapil',
+        sourceKey: 'kode_dapil',
         as: 'kandidat-dapil'
       });
       this.hasMany(models.TPS,{
-        foreignKey: 'id_dapil',
-        sourceKey: 'id',
+        foreignKey: 'kode_dapil',
+        sourceKey: 'kode_dapil',
         as: 'tps-dapil'
       })
     }

@@ -35,7 +35,8 @@ const getKandidatAll = async (req,res) =>{
                 },
                 {
                     model: Super_admin,
-                    as: 'admin'
+                    as: 'admin',
+                    attributes: ['nama']
                 }
             ]
         })
@@ -87,7 +88,8 @@ const getKandidatById = async (req, res) => {
                 },
                 {
                     model: Super_admin,
-                    as: 'admin'
+                    as: 'admin',
+                    attributes: ['nama']
                 }
             ] 
         })

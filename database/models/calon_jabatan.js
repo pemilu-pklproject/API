@@ -10,7 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-    
+      this.hasOne(models.Kandidat, {
+        foreignKey: "id_jabatan",
+        sourceKey: 'id',
+        as: "jbtn"
+      })
     }
   }
   Data_Calon_jabatan.init({

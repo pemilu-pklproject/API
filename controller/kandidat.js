@@ -1,6 +1,6 @@
-const { Kandidat } = require("../database/models")
+const { Kandidat, Calon_jabatan } = require("../database/models")
 const { decrypt, encrypt } = require('../helper/bcrypt');
-
+const model = require("../database/config/index")
 //insert kandidat
 const insertKandidat = async (req, res) => {
     const { password } = req.body;
@@ -19,7 +19,13 @@ const insertKandidat = async (req, res) => {
 //getAllKandidat
 const getAllKandidat = async (req,res) =>{
     Kandidat
-        .findAll()
+        .findAll({
+            include:
+                { 
+                    model : Calon_jabatan,
+                    as: 'jabatan'
+                }
+        })
         .then((datas)=>{
             res.status=true
             res.json(datas)

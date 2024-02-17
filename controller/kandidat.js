@@ -1,6 +1,6 @@
 const { Kandidat, Calon_jabatan, Wilayah, Dapil, Super_admin } = require("../database/models")
 const { decrypt, encrypt } = require('../helper/bcrypt');
-const model = require("../database/config/index")
+
 //insert kandidat
 const insertKandidat = async (req, res) => {
     const { password } = req.body;
@@ -23,7 +23,7 @@ const getKandidatAll = async (req,res) =>{
             include:[
                 {
                     model : Calon_jabatan,
-                    as: 'jabatan'
+                    as: 'jbtn'
                 },
                 {
                     model: Wilayah,
@@ -31,7 +31,8 @@ const getKandidatAll = async (req,res) =>{
                 },
                 {
                     model: Dapil,
-                    as: 'kandidat-dapil'
+                    as: 'kandidat-dapil',
+                    attributes: ['id','kode_dapil','nama_dapil']
                 },
                 {
                     model: Super_admin,
@@ -42,7 +43,7 @@ const getKandidatAll = async (req,res) =>{
         })
         .then((datas)=>{
             res.status=true
-            res.json(datas)
+            res.json(datas[0])
         })
         .catch(err =>{
             console.log(err)
@@ -76,7 +77,7 @@ const getKandidatById = async (req, res) => {
             include:[
                 {
                     model : Calon_jabatan,
-                    as: 'jabatan'
+                    as: 'jbtn'
                 },
                 {
                     model: Wilayah,
@@ -84,7 +85,8 @@ const getKandidatById = async (req, res) => {
                 },
                 {
                     model: Dapil,
-                    as: 'kandidat-dapil'
+                    as: 'kandidat-dapil',
+                    attributes: ['id','kode_dapil','nama_dapil']
                 },
                 {
                     model: Super_admin,
@@ -96,7 +98,7 @@ const getKandidatById = async (req, res) => {
         .then((data) => {
             if(data.length == 0) {
                 return res.status(404).json({status: false, message: "id kandidat not found"})}
-            res.json(data)
+            res.json(data[0])
         })
         .catch(err => {
             console.log(err)

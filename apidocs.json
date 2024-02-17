@@ -264,7 +264,7 @@
                   "passowrd": "password",
                   "jenis_kelamin": "jenis_kelamin",
                   "partai": "partai",
-                  "id_dapil": "id_dapil",
+                  "kode_dapil": "kode_dapil",
                   "no_urut": "no_urut",
                   "id_jabatan": "id_jabatan",
                   "id_admin": "id_admin",
@@ -587,7 +587,7 @@
                     "passowrd": "password",
                     "jenis_kelamin": "jenis_kelamin",
                     "partai": "partai",
-                    "id_dapil": "id_dapil",
+                    "kode_dapil": "kode_dapil",
                     "no_urut": "no_urut",
                     "id_jabatan": "id_jabatan",
                     "id_admin": "id_admin",
@@ -632,7 +632,7 @@
                       "password": "$2b$10$fUZKf2wzBvG4e3aPCV5yweY5/YxjHfB15vYsyQpWMLp20qR91gUKK",
                       "jenis_kelamin": "pria",
                       "partai": "golkar",
-                      "id_dapil": 2,
+                      "kode_dapil": 2,
                       "no_urut": "3",
                       "id_jabatan": 2,
                       "id_admin": 1,
@@ -707,7 +707,7 @@
                     "passowrd": "password",
                     "jenis_kelamin": "jenis_kelamin",
                     "partai": "partai",
-                    "id_dapil": "id_dapil",
+                    "kode_dapil": "kode_dapil",
                     "no_urut": "no_urut",
                     "id_jabatan": "id_jabatan",
                     "id_admin": "id_admin",
@@ -750,7 +750,7 @@
                   "passowrd": "password",
                   "jenis_kelamin": "jenis_kelamin",
                   "partai": "partai",
-                  "id_dapil": "id_dapil",
+                  "kode_dapil": "kode_dapil",
                   "no_urut": "no_urut",
                   "id_jabatan": "id_jabatan",
                   "id_admin": "id_admin",
@@ -1257,18 +1257,7 @@
                     "isSaksi": "isSaksi",
                     "isRelawan": "isRelawan",
                     "candidate": {
-                      "id": 6,
-                      "nama": "ilham",
-                      "nik": "12131313131",
-                      "email": "@ilham",
-                      "password": "$2b$10$fUZKf2wzBvG4e3aPCV5yweY5/YxjHfB15vYsyQpWMLp20qR91gUKK",
-                      "jenis_kelamin": "pria",
-                      "partai": "golkar",
-                      "id_dapil": 2,
-                      "no_urut": "3",
-                      "id_jabatan": 2,
-                      "id_admin": 1,
-                      "id_wilayah": 4
+                      "nama": "ilham"
                   }
                   }
                 }
@@ -1567,7 +1556,7 @@
           "content": {
             "application/json": {
               "example": {
-                "id_dapil":null,
+                "kode_dapil":null,
                 "id_wilayah":"11.12.09",
                 "nomor":"12",
                 "id_saksi":"2",
@@ -1582,7 +1571,7 @@
             "content": {
               "application/json": {
                 "example": {
-                  "id_dapil":null,
+                  "kode_dapil":null,
                   "id_wilayah":"11.12.09",
                   "nomor":"12",
                   "id_saksi":"2",
@@ -1620,7 +1609,45 @@
               "content": {
                 "application/json": {
                   "example": {
-                    "id_dapil":null,
+                    "kode_dapil":null,
+                    "id_wilayah":"11.12.09",
+                    "nomor":"12",
+                    "id_saksi":"2",
+                    "id_kandidat":"3"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
+      "/si-pemilu/api/v1/data/tps.json": {
+        "get": {
+          "tags": ["TPS"],
+          "summary": "get all TPS (versi inner join)",
+          "description": "menampilkan data TPS",
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "kode_dapil":null,
                     "id_wilayah":"11.12.09",
                     "nomor":"12",
                     "id_saksi":"2",
@@ -1670,7 +1697,7 @@
               "content": {
                 "application/json": {
                   "example": {
-                    "id_dapil":null,
+                    "kode_dapil":null,
                     "id_wilayah":"11.12.09",
                     "nomor":"12",
                     "id_saksi":"2",
@@ -1720,7 +1747,7 @@
               "content": {
                 "application/json": {
                   "example": {
-                    "id_dapil":null,
+                    "kode_dapil":null,
                     "id_wilayah":"11.12.09",
                     "nomor":"12",
                     "id_saksi":"2",
@@ -1747,7 +1774,7 @@
         }
       },
 
-      "/si-pemilu/api/v1/tps/dapil/{id_dapil}.json": {
+      "/si-pemilu/api/v1/tps/dapil/{kode_dapil}.json": {
         "get": {
           "tags": ["TPS"],
           "summary": "get TPS by id dapil",
@@ -1755,7 +1782,7 @@
           "operationId": "getTPSByIdDapil",
           "parameters": [
             {
-              "name": "id_dapil",
+              "name": "kode_dapil",
               "in": "path",
               "description": "id dapil",
               "required": true,
@@ -1770,7 +1797,7 @@
               "content": {
                 "application/json": {
                   "example": {
-                    "id_dapil":null,
+                    "kode_dapil":null,
                     "id_wilayah":"11.12.09",
                     "nomor":"12",
                     "id_saksi":"2",
@@ -1820,7 +1847,7 @@
               "content": {
                 "application/json": {
                   "example": {
-                    "id_dapil":null,
+                    "kode_dapil":null,
                     "id_wilayah":"11.12.09",
                     "nomor":"12",
                     "id_saksi":"2",
@@ -1857,7 +1884,7 @@
             "content": {
               "application/json": {
                 "example": {
-                  "id_dapil":null,
+                  "kode_dapil":null,
                   "id_wilayah":"11.12.09",
                   "nomor":"12",
                   "id_saksi":"2",

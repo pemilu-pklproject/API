@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Calon_jabatan, {
         foreignKey: 'id_jabatan',
         targetKey: 'id',
-        as: "jabatan"
+        as: "jbtn"
       });
       this.belongsTo(models.Wilayah, {
-        foreignKey: 'id_wilayah',
-        targetKey: 'id',
+        foreignKey: 'kode_wilayah',
+        targetKey: 'kode',
         as: 'wilayah'
       });
       this.belongsTo(models.Dapil, {

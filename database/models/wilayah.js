@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.hasMany(models.Kandidat, {
-        foreignKey: 'id_wilayah',
-        sourceKey: 'id',
+        foreignKey: 'kode_wilayah',
+        sourceKey: 'kode',
         as: 'wilayah'
       });
       this.hasMany(models.TPS, {

@@ -175,5 +175,6 @@ module.exports = {
     deleteAllTPS,
     getTPSByDapil,
     getTPSByWilayah,
-    getTPSByKandidat
+    getTPSByKandidat,
+    getTPSAll
 };

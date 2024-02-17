@@ -614,7 +614,7 @@
         }
       },
 
-      "/si-pemilu/api/v1/kandidat/data.json": {
+      "/si-pemilu/api/v1/data/kandidat.json": {
         "get": {
           "tags": ["Kandidat"],
           "summary": "get all kandidat (dengan inner join)",

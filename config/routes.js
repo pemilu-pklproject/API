@@ -16,7 +16,8 @@ const {
     deleteRelawan,
     deleteAllRelawan,
     getRelawanByKandidat,
-    getSaksiByKandidat
+    getSaksiByKandidat,
+    getRelawanAll
 } = require("../controller/relawan")
 
 const { 
@@ -109,6 +110,7 @@ module.exports = (app) =>{
     app.post(`${BASE_URL}/relawan/add`, insertRelawan)
     app.get(`${BASE_URL}/relawan/:id.json`, getRelawanById)
     app.get(`${BASE_URL}/relawan.json`, getAllRelawan)
+    app.get(`${BASE_URL}/data/relawan.json`, getRelawanAll)
     app.get(`${BASE_URL}/relawan/data/:id_kandidat.json`, getRelawanByKandidat)
     app.get(`${BASE_URL}/relawan/saksi/:id_kandidat.json`, getSaksiByKandidat)
     app.put(`${BASE_URL}/relawan/update/:id`, updateRelawan)

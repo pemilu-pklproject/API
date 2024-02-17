@@ -1,4 +1,4 @@
-const { Relawan } = require("../database/models")
+const { Relawan, Kandidat } = require("../database/models")
 const { encrypt } = require('../helper/bcrypt');
 
 //insert Relawan
@@ -30,6 +30,29 @@ const getAllRelawan = async (req, res) =>{
         res.send("server error")
     })
 };
+
+
+const getRelawanAll = async (req, res) =>{
+    Relawan
+    .findAll({
+        include: [
+            {
+                model: Kandidat,
+                as: 'candidate'
+            }
+        ]
+    })
+    .then((datas)=>{
+        res.status=true
+        res.json(datas)
+    })
+    .catch(err =>{
+        console.log(err)
+        res.status=500
+        res.send("server error")
+    })
+};
+
 
 //get relawan by kandidat
 const getRelawanByKandidat = async (req, res) =>{
@@ -130,5 +153,6 @@ module.exports = {
     deleteRelawan,
     deleteAllRelawan,
     getRelawanByKandidat,
-    getSaksiByKandidat
+    getSaksiByKandidat,
+    getRelawanAll
 };

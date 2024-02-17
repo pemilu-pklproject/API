@@ -13,8 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Kandidat,{
         foreignKey:'id_dapil',
         sourceKey: 'id',
-        as: 'dapil'
-        
+        as: 'kandidat-dapil'
+      });
+      this.hasMany(models.TPS,{
+        foreignKey: 'id_dapil',
+        sourceKey: 'id',
+        as: 'tps-dapil'
       })
     }
   }

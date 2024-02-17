@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id_wilayah',
         sourceKey: 'id',
         as: 'wilayah'
+      });
+      this.hasMany(models.TPS, {
+        foreignKey: 'id_wilayah',
+        sourceKey: 'id',
+        as: 'tps-wilayah'
       })
     }
   }

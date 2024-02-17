@@ -10,7 +10,21 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-
+      this.belongsTo(models.Dapil,{
+        foreignKey: 'id_dapil',
+        targetKey: 'id',
+        as: 'tps-dapil'
+      });
+      this.belongsTo(models.Wilayah, {
+        foreignKey: 'id_wilayah',
+        targetKey: 'id',
+        as: 'tps-wilayah'
+      });
+      this.belongsTo(models.Kandidat, {
+        foreignKey: 'id_kandidat',
+        targetKey: 'id',
+        as: 'tps-kandidat'
+      })
     }
   }
   Data_TPS.init({

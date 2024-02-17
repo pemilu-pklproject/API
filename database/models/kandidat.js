@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Dapil, {
         foreignKey: 'id_dapil',
         targetKey:'id',
-        as: 'dapil'
+        as: 'kandidat-dapil'
       });
       this.hasMany(models.Relawan, {
         foreignKey: 'id_kandidat',
@@ -34,6 +34,16 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id_kandidat',
         sourceKey: 'id',
         as: 'kandidat'
+      });
+      this.hasMany(models.TPS, {
+        foreignKey: 'id_kandidat',
+        sourceKey:'id',
+        as: 'tps-kandidat'
+      });
+      this.belongsTo(models.Super_admin, {
+        foreignKey: 'id_admin',
+        targetKey: 'id',
+        as: 'admin'
       })
     }
     

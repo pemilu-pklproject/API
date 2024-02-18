@@ -25,7 +25,10 @@ const getAllDapil = async (req, res) => {
                         Sequelize.where(Sequelize.fn('LEFT', Sequelize.col('kode_dapil'), 2), prefix) 
                     ]
                 }
-            }
+            },
+            order: [['id', 'ASC']],
+            group: ['Dapil.kode_dapil'],
+            attributes: ['id','kode_dapil','jenis_dapil','nama_dapil']
         });
 
         if (!dapil || dapil.length === 0) {

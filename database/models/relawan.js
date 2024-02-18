@@ -19,6 +19,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id_saksi',
         sourceKey: 'id',
         as: 'saksi'
+      });
+      this.hasMany(models.Pemilih, {
+        foreignKey:'id_relawan',
+        sourceKey:'id',
+        as:'relawan'
       })
     }
     

@@ -1,4 +1,4 @@
-const { Pemilih } = require("../database/models")
+const { Pemilih, Relawan, TPS, Wilayah, Sequelize } = require("../database/models")
 
 //insert pemilih
 const insertPemilih = async (req, res) => {
@@ -30,7 +30,55 @@ const getAllPemilih = async (req, res) =>{
 //get pemilih by Id
 const getPemilihById = async (req, res) => {
     Pemilih
-        .findAll({ where: { id: req.params.id } })
+        .findAll({ where: 
+            { 
+                id: req.params.id 
+            },
+            include: [
+                {
+                    model: Relawan,
+                    as:'relawan',
+                    attributes:['nama']
+                },
+                {
+                    model: TPS,
+                    as:'tps_pemilih',
+                    attributes:['id','nomor','nama_kpps','alamat']
+                },
+                {
+                    model: Wilayah,
+                    as:'pemilih_wilayah',
+                    attributes:[[Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 2 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 2) = SUBSTRING(pemilih_wilayah.kode, 1, 2) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_provinsi'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 5 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 5) = SUBSTRING(pemilih_wilayah.kode, 1, 5) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_kabupaten'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 8 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 8) = SUBSTRING(pemilih_wilayah.kode, 1, 8) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_kecamatan'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 13 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 13) = SUBSTRING(pemilih_wilayah.kode, 1, 13) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_desa']]
+    
+                },
+            ] })
         .then((data) => {
             if(data.length == 0) {
                 return res.status(404).json({status: false, message: "id pemilih not found"})}
@@ -47,7 +95,57 @@ const getPemilihById = async (req, res) => {
 const getPemilihByKandidat = async (req, res) => {
     const kandidat = req.params.id_kandidat
     Pemilih
-        .findAll({ where: { id_kandidat: kandidat} })
+        .findAll({ 
+            where: 
+            { 
+                id_kandidat: kandidat
+            },
+            include: [
+                {
+                    model: Relawan,
+                    as:'relawan',
+                    attributes:['nama']
+                },
+                {
+                    model: TPS,
+                    as:'tps_pemilih',
+                    attributes:['id','nomor','nama_kpps','alamat']
+                },
+                {
+                    model: Wilayah,
+                    as:'pemilih_wilayah',
+                    attributes:[[Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 2 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 2) = SUBSTRING(pemilih_wilayah.kode, 1, 2) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_provinsi'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 5 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 5) = SUBSTRING(pemilih_wilayah.kode, 1, 5) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_kabupaten'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 8 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 8) = SUBSTRING(pemilih_wilayah.kode, 1, 8) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_kecamatan'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 13 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 13) = SUBSTRING(pemilih_wilayah.kode, 1, 13) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_desa']]
+    
+                },
+            ]
+        })
         .then((data) => {
             if(data.length == 0) {
                 return res.status(404).json({status: false, message: "id pemilih not found"})}
@@ -62,10 +160,59 @@ const getPemilihByKandidat = async (req, res) => {
 
 //get pemilih by relawan
 const getPemilihByRelawan = async (req, res) => {
-    const kandidat = req.params.id_kandidat
     const relawan = req.params.id_relawan
     Pemilih
-        .findAll({ where: { id_kandidat: kandidat, id_relawan: relawan } })
+        .findAll({ 
+            where: 
+            { 
+                id_relawan: relawan 
+            },
+            include: [
+                {
+                    model: Relawan,
+                    as:'relawan',
+                    attributes:['nama']
+                },
+                {
+                    model: TPS,
+                    as:'tps_pemilih',
+                    attributes:['id','nomor','nama_kpps','alamat']
+                },
+                {
+                    model: Wilayah,
+                    as:'pemilih_wilayah',
+                    attributes:[[Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 2 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 2) = SUBSTRING(pemilih_wilayah.kode, 1, 2) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_provinsi'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 5 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 5) = SUBSTRING(pemilih_wilayah.kode, 1, 5) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_kabupaten'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 8 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 8) = SUBSTRING(pemilih_wilayah.kode, 1, 8) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_kecamatan'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 13 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 13) = SUBSTRING(pemilih_wilayah.kode, 1, 13) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_desa']]
+    
+                },
+            ]
+         })
         .then((data) => {
             if(data.length == 0) {
                 return res.status(404).json({status: false, message: "id pemilih not found"})}

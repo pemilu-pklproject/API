@@ -281,7 +281,6 @@ const getTPSByKandidat = async (req, res) => {
     
                 }
             ],
-            order: ['id','ASC']
         })
         .then((data) => {
             if(data.length == 0) {

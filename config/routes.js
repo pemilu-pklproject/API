@@ -62,7 +62,7 @@ const {
     RelawanLogin
 } = require("../controller/auth");
 
-const gen_token = require('../helper/generate-token');
+
 
 const { 
     getKabupatenById,
@@ -94,6 +94,7 @@ const {
 } = require("../controller/admin");
 
 const { uploadImage } = require('../helper/image-handler');
+const { verifyUser } = require('./middleware')
 
 const BASE_URL = '/si-pemilu/api/v1'
 
@@ -102,7 +103,7 @@ module.exports = (app) =>{
     //admin
     app.post(`${BASE_URL}/login/admin`, authLogin)
     app.post(`${BASE_URL}/admin/add`, insertAdmin)
-    app.get(`${BASE_URL}/admin.json`, getAllAdmin)
+    app.get(`${BASE_URL}/admin.json`, verifyUser, getAllAdmin)
     app.get(`${BASE_URL}/admin/:id.json`, getAdminById)
     app.put(`${BASE_URL}/admin/update/:id`, updateAdmin)
     app.delete(`${BASE_URL}/admin/delete/:id`, deleteAdmin)

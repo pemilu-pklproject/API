@@ -19,9 +19,8 @@ const authLogin = async (req, res) => {
 
                 const { id, email, nama } = data[0];
                 const access_token = jwt.sign({ id, email, nama }, process.env.ACCESS_TOKEN, { expiresIn: '600s' });
-                const refresh_token = jwt.sign({ id, email, nama }, process.env.REFRESH_TOKEN, { expiresIn: '90d' });
     
-                return res.json({status: true, user : { id: id, nama: nama }, access_token, refresh_token });
+                return res.json({status: true, user : { id: id, nama: nama }, access_token});
             });
         })
         .catch(err => {

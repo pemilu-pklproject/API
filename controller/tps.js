@@ -1,4 +1,4 @@
-const { TPS, Dapil, Relawan, Wilayah } = require("../database/models");
+const { TPS, Dapil, Relawan, Wilayah, Hasil_suara } = require("../database/models");
 const wilayah = require("../database/models/wilayah");
 
 //insert TPS
@@ -77,6 +77,18 @@ const getTPSById = async (req, res) => {
                     model: Dapil,
                     as: 'tps-dapil',
                     attributes: ['nama']
+                },
+                {
+                    model: Wilayah,
+                    as:'tps-wilayah',
+                    attributes:['nama']
+    
+                },
+                {
+                    model: Relawan,
+                    as:'saksi',
+                    attributes:['nama']
+    
                 }
             ]
         })
@@ -92,11 +104,39 @@ const getTPSById = async (req, res) => {
         })
 };
 
-//get tps by id kandidat
-const getTPSByKandidat = async (req, res) => {
+//get tps dan suara by id kandidat
+const getTPSandSuaraByKandidat = async (req, res) => {
     const kandidat = req.params.id_kandidat
     TPS
-        .findAll({ where: { id_kandidat: kandidat } })
+        .findAll({ where: 
+            { 
+                id_kandidat: kandidat 
+            },
+            include: [
+                {
+                    model: Dapil,
+                    as: 'tps-dapil',
+                    attributes: ['nama']
+                },
+                {
+                    model: Wilayah,
+                    as:'tps-wilayah',
+                    attributes:['nama']
+    
+                },
+                {
+                    model: Relawan,
+                    as:'saksi',
+                    attributes:['nama']
+    
+                },
+                {
+                    model: Hasil_suara,
+                    as: 'suara',
+                    attributes: ['dokumen', 'total']
+                }
+            ]
+        })
         .then((data) => {
             if(data.length == 0) {
                 return res.status(404).json({status: false, message: "id TPS not found"})}
@@ -109,6 +149,45 @@ const getTPSByKandidat = async (req, res) => {
         })
 };
 
+//get tps by kandidat
+const getTPSByKandidat = async (req, res) => {
+    const kandidat = req.params.id_kandidat
+    TPS
+        .findAll({ where: 
+            { 
+                id_kandidat: kandidat 
+            },
+            include: [
+                {
+                    model: Dapil,
+                    as: 'tps-dapil',
+                    attributes: ['nama']
+                },
+                {
+                    model: Wilayah,
+                    as:'tps-wilayah',
+                    attributes:['nama']
+    
+                },
+                {
+                    model: Relawan,
+                    as:'saksi',
+                    attributes:['nama']
+    
+                }
+            ]
+        })
+        .then((data) => {
+            if(data.length == 0) {
+                return res.status(404).json({status: false, message: "id TPS not found"})}
+            res.json(data)
+        })
+        .catch(err => {
+            console.log(err)
+            res.statusCode = 500
+            res.send("Server Error")
+        })
+};
 
 //get TPS by dapil
 const getTPSByDapil = async (req, res) => {
@@ -189,5 +268,6 @@ module.exports = {
     getTPSByDapil,
     getTPSByWilayah,
     getTPSByKandidat,
-    getTPSAll
+    getTPSAll,
+    getTPSandSuaraByKandidat
 };

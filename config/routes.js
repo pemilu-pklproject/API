@@ -42,7 +42,8 @@ const {
     getTPSByDapil,
     getTPSByWilayah,
     getTPSByKandidat,
-    getTPSAll
+    getTPSAll,
+    getTPSandSuaraByKandidat
 } = require("../controller/tps");
 
 const { 
@@ -144,6 +145,7 @@ module.exports = (app) =>{
     app.get(`${BASE_URL}/tps/:id.json`, getTPSById)
     app.get(`${BASE_URL}/tps.json`, getAllTPS)
     app.get(`${BASE_URL}/data/tps.json`, getTPSAll)
+    app.get(`${BASE_URL}/tps/hasil/:id_kandidat.json`, getTPSandSuaraByKandidat)
     app.get(`${BASE_URL}/kandidat/tps/:id_kandidat`, getTPSByKandidat)
     app.get(`${BASE_URL}/tps/dapil/:id_dapil.json`, getTPSByDapil)
     app.get(`${BASE_URL}/tps/wilayah/:id_wilayah.json`, getTPSByWilayah)

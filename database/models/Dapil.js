@@ -15,11 +15,6 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: 'kode_dapil',
         as: 'kandidat-dapil'
       });
-      this.hasMany(models.TPS,{
-        foreignKey: 'kode_dapil',
-        sourceKey: 'kode_dapil',
-        as: 'tps-dapil'
-      })
     }
   }
   Data_dapil.init({

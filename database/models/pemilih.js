@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     id_tps: DataTypes.INTEGER,
     alamat: DataTypes.STRING,
     rt_rw: DataTypes.STRING,
-    id_wilayah: DataTypes.INTEGER
+    kode_wilayah: DataTypes.STRING
   }, {
     sequelize,
     timestamps:false,

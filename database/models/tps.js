@@ -10,11 +10,6 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.belongsTo(models.Dapil,{
-        foreignKey: 'kode_dapil',
-        targetKey: 'kode_dapil',
-        as: 'tps-dapil'
-      });
       this.belongsTo(models.Wilayah, {
         foreignKey: 'id_wilayah',
         targetKey: 'id',
@@ -29,12 +24,17 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id_saksi',
         targetKey:'id',
         as: 'saksi'
+      });
+      this.hasOne(models.Hasil_suara, {
+        foreignKey: 'id_tps',
+        sourceKey: 'id',
+        as: 'suara'
       })
     }
   }
   Data_TPS.init({
-    kode_dapil: DataTypes.STRING,
     id_wilayah: DataTypes.INTEGER,
+    alamat: DataTypes.TEXT,
     nomor: DataTypes.INTEGER,
     id_saksi: DataTypes.INTEGER,
     nama_kpps: DataTypes.STRING,

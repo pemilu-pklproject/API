@@ -35,7 +35,7 @@ const getTPSAll = async (req, res) =>{
         include: [
             {
                 model: Wilayah,
-                as:'tps-wilayah',
+                as:'tps_wilayah',
                 attributes:['nama']
 
             },
@@ -70,7 +70,7 @@ const getTPSById = async (req, res) => {
             include: [
                 {
                     model: Wilayah,
-                    as:'tps-wilayah',
+                    as:'tps_wilayah',
                     attributes:['nama']
     
                 },
@@ -97,6 +97,7 @@ const getTPSById = async (req, res) => {
 //get tps dan suara by id kandidat
 const getTPSandSuaraByKandidat = async (req, res) => {
     const kandidat = req.params.id_kandidat
+
     TPS
         .findAll({ where: 
             { 
@@ -105,7 +106,7 @@ const getTPSandSuaraByKandidat = async (req, res) => {
             include: [
                 {
                     model: Wilayah,
-                    as:'tps-wilayah',
+                    as:'tps_wilayah',
                     attributes:['nama']
     
                 },
@@ -145,7 +146,7 @@ const getTPSByKandidat = async (req, res) => {
             include: [
                 {
                     model: Wilayah,
-                    as:'tps-wilayah',
+                    as:'tps_wilayah',
                     attributes:['nama']
     
                 },

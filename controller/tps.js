@@ -1,5 +1,6 @@
-const { TPS, Relawan, Wilayah, Hasil_suara } = require("../database/models");
+const { TPS, Relawan, Wilayah, Hasil_suara, Sequelize } = require("../database/models");
 const wilayah = require("../database/models/wilayah");
+
 
 //insert TPS
 const insertTPS = async (req, res) => {
@@ -36,14 +37,51 @@ const getTPSAll = async (req, res) =>{
             {
                 model: Wilayah,
                 as:'tps_wilayah',
-                attributes:['nama']
-
+                attributes: [
+                    // [Sequelize.literal('SUBSTRING(kode, 1, 2)'), 'provinsi'],
+                    // [Sequelize.literal('SUBSTRING(kode, 1, 5)'), 'kab_kota'],
+                    // [Sequelize.literal('SUBSTRING(kode, 1, 8)'), 'kecamatan'],
+                    // [Sequelize.literal('SUBSTRING(kode, 1, 13)'), 'desa_kel'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 2 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 2) = SUBSTRING(tps_wilayah.kode, 1, 2) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_provinsi'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 5 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 5) = SUBSTRING(tps_wilayah.kode, 1, 5) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_kabupaten'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 8 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 8) = SUBSTRING(tps_wilayah.kode, 1, 8) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_kecamatan'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 13 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 13) = SUBSTRING(tps_wilayah.kode, 1, 13) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_desa']
+                ]
             },
             {
                 model: Relawan,
                 as:'saksi',
                 attributes:['nama']
 
+            },
+            {
+                model: Hasil_suara,
+                as: 'suara',
+                attributes: ['dokumen', 'total']
             }
         ]
     })
@@ -71,7 +109,36 @@ const getTPSById = async (req, res) => {
                 {
                     model: Wilayah,
                     as:'tps_wilayah',
-                    attributes:['nama']
+                    attributes:[
+                        [Sequelize.literal(`(
+                            CASE
+                                WHEN LENGTH(kode) >= 2 THEN (
+                                    SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 2) = SUBSTRING(tps_wilayah.kode, 1, 2) LIMIT 1
+                                )
+                            END
+                        )`), 'nama_provinsi'],
+                        [Sequelize.literal(`(
+                            CASE
+                                WHEN LENGTH(kode) >= 5 THEN (
+                                    SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 5) = SUBSTRING(tps_wilayah.kode, 1, 5) LIMIT 1
+                                )
+                            END
+                        )`), 'nama_kabupaten'],
+                        [Sequelize.literal(`(
+                            CASE
+                                WHEN LENGTH(kode) >= 8 THEN (
+                                    SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 8) = SUBSTRING(tps_wilayah.kode, 1, 8) LIMIT 1
+                                )
+                            END
+                        )`), 'nama_kecamatan'],
+                        [Sequelize.literal(`(
+                            CASE
+                                WHEN LENGTH(kode) >= 13 THEN (
+                                    SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 13) = SUBSTRING(tps_wilayah.kode, 1, 13) LIMIT 1
+                                )
+                            END
+                        )`), 'nama_desa']
+                    ]
     
                 },
                 {
@@ -79,7 +146,8 @@ const getTPSById = async (req, res) => {
                     as:'saksi',
                     attributes:['nama']
     
-                }
+                },
+                
             ]
         })
         .then((data) => {
@@ -107,7 +175,36 @@ const getTPSandSuaraByKandidat = async (req, res) => {
                 {
                     model: Wilayah,
                     as:'tps_wilayah',
-                    attributes:['nama']
+                    attributes:[
+                        [Sequelize.literal(`(
+                            CASE
+                                WHEN LENGTH(kode) >= 2 THEN (
+                                    SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 2) = SUBSTRING(tps_wilayah.kode, 1, 2) LIMIT 1
+                                )
+                            END
+                        )`), 'nama_provinsi'],
+                        [Sequelize.literal(`(
+                            CASE
+                                WHEN LENGTH(kode) >= 5 THEN (
+                                    SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 5) = SUBSTRING(tps_wilayah.kode, 1, 5) LIMIT 1
+                                )
+                            END
+                        )`), 'nama_kabupaten'],
+                        [Sequelize.literal(`(
+                            CASE
+                                WHEN LENGTH(kode) >= 8 THEN (
+                                    SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 8) = SUBSTRING(tps_wilayah.kode, 1, 8) LIMIT 1
+                                )
+                            END
+                        )`), 'nama_kecamatan'],
+                        [Sequelize.literal(`(
+                            CASE
+                                WHEN LENGTH(kode) >= 13 THEN (
+                                    SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 13) = SUBSTRING(tps_wilayah.kode, 1, 13) LIMIT 1
+                                )
+                            END
+                        )`), 'nama_desa']
+                    ]
     
                 },
                 {
@@ -147,7 +244,34 @@ const getTPSByKandidat = async (req, res) => {
                 {
                     model: Wilayah,
                     as:'tps_wilayah',
-                    attributes:['nama']
+                    attributes:[[Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 2 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 2) = SUBSTRING(tps_wilayah.kode, 1, 2) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_provinsi'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 5 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 5) = SUBSTRING(tps_wilayah.kode, 1, 5) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_kabupaten'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 8 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 8) = SUBSTRING(tps_wilayah.kode, 1, 8) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_kecamatan'],
+                    [Sequelize.literal(`(
+                        CASE
+                            WHEN LENGTH(kode) >= 13 THEN (
+                                SELECT nama FROM wilayah WHERE SUBSTRING(kode, 1, 13) = SUBSTRING(tps_wilayah.kode, 1, 13) LIMIT 1
+                            )
+                        END
+                    )`), 'nama_desa']]
     
                 },
                 {
@@ -156,7 +280,8 @@ const getTPSByKandidat = async (req, res) => {
                     attributes:['nama']
     
                 }
-            ]
+            ],
+            order: ['id','ASC']
         })
         .then((data) => {
             if(data.length == 0) {

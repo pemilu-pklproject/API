@@ -88,25 +88,6 @@ const RelawanLogin = async (req, res) => {
         })
 }
 
-
-//regis admin
-// const AdminRegister =  (req, res) => {
-//     const { password } = req.body;
-//     req.body.password = encrypt(password);
-
-//     Super_admin
-//     .create(req.body)
-//     .then(() => res.status(201).json({ status: true, msg: 'Registrasi berhasil' }))
-//     .catch((err) => {
-//         console.error(err);
-//         res.statusCode = 500;
-//         res.send('Server Error');
-//     });
-// }
-
-
-
-
 module.exports = {
     authLogin, 
     kandidatLogin, 

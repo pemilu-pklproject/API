@@ -1674,44 +1674,6 @@
         }
       },
 
-      "/si-pemilu/api/v1/tps/hasil/{id_kandidat}.json": {
-        "get": {
-          "tags": ["TPS"],
-          "summary": "get all TPS and Suara (versi inner join)",
-          "description": "menampilkan data TPS dan suara",
-          "responses": {
-            "200": {
-              "description": "Sukses",
-              "content": {
-                "application/json": {
-                  "example": {
-                    "kode_dapil":null,
-                    "id_wilayah":"11.12.09",
-                    "nomor":"12",
-                    "id_saksi":"2",
-                    "id_kandidat":"3"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized",
-              "content": {
-                "application/json": {
-                  "example": {
-                    "status": false,
-                    "msg": "data gagal ditemukan"
-                  }
-                }
-              }
-            },
-            "500": {
-              "description": "Server Error"
-            }
-          }
-        }
-      },
-
       "/si-pemilu/api/v1/tps/{id}.json": {
         "get": {
           "tags": ["TPS"],
@@ -1812,7 +1774,7 @@
         }
       },
 
-      "/si-pemilu/api/v1/tps/hasil{id_kandidat}.json": {
+      "/si-pemilu/api/v1/tps/hasil/{id_kandidat}.json": {
         "get": {
           "tags": ["TPS"],
           "summary": "get TPS dan suara by id kandidat (inner join)",

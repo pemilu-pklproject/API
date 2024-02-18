@@ -1,6 +1,6 @@
 const { Kandidat, Calon_jabatan, Wilayah, Dapil, Super_admin } = require("../database/models")
 const { decrypt, encrypt } = require('../helper/bcrypt');
-
+const {Op, Sequelize} = require('sequelize')
 //insert kandidat
 const insertKandidat = async (req, res) => {
     const { password } = req.body;
@@ -39,11 +39,13 @@ const getKandidatAll = async (req,res) =>{
                     as: 'admin',
                     attributes: ['nama']
                 }
-            ]
+            ],
+            order: [['id', 'ASC']],
+            group: ['Kandidat.id']
         })
         .then((datas)=>{
             res.status=true
-            res.json(datas[0])
+            res.json(datas)
         })
         .catch(err =>{
             console.log(err)

@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.Wilayah, {
-        foreignKey: 'id_wilayah',
-        targetKey: 'id',
+        foreignKey: 'kode_wilayah',
+        targetKey: 'kode',
         as: 'tps-wilayah'
       });
       this.belongsTo(models.Kandidat, {
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Data_TPS.init({
-    id_wilayah: DataTypes.INTEGER,
+    kode_wilayah: DataTypes.STRING,
     alamat: DataTypes.TEXT,
     nomor: DataTypes.INTEGER,
     id_saksi: DataTypes.INTEGER,

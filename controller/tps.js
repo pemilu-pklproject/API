@@ -1,4 +1,4 @@
-const { TPS, Dapil, Relawan, Wilayah, Hasil_suara } = require("../database/models");
+const { TPS, Relawan, Wilayah, Hasil_suara } = require("../database/models");
 const wilayah = require("../database/models/wilayah");
 
 //insert TPS
@@ -33,11 +33,6 @@ const getTPSAll = async (req, res) =>{
     TPS
     .findAll({
         include: [
-            {
-                model: Dapil,
-                as: 'tps-dapil',
-                attributes: ['nama']
-            },
             {
                 model: Wilayah,
                 as:'tps-wilayah',
@@ -74,11 +69,6 @@ const getTPSById = async (req, res) => {
             },
             include: [
                 {
-                    model: Dapil,
-                    as: 'tps-dapil',
-                    attributes: ['nama']
-                },
-                {
                     model: Wilayah,
                     as:'tps-wilayah',
                     attributes:['nama']
@@ -113,11 +103,6 @@ const getTPSandSuaraByKandidat = async (req, res) => {
                 id_kandidat: kandidat 
             },
             include: [
-                {
-                    model: Dapil,
-                    as: 'tps-dapil',
-                    attributes: ['nama']
-                },
                 {
                     model: Wilayah,
                     as:'tps-wilayah',
@@ -158,11 +143,6 @@ const getTPSByKandidat = async (req, res) => {
                 id_kandidat: kandidat 
             },
             include: [
-                {
-                    model: Dapil,
-                    as: 'tps-dapil',
-                    attributes: ['nama']
-                },
                 {
                     model: Wilayah,
                     as:'tps-wilayah',

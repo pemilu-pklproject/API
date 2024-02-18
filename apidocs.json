@@ -17,6 +17,10 @@
       "description": ""
     },
     {
+      "name": "Logout",
+      "description": ""
+    },
+    {
       "name": "Regis",
       "description": ""
     },
@@ -2747,7 +2751,25 @@
             }
           }
         }
-      }
+      },
+      "/si-pemilu/api/v1/logout": {
+        "get": {
+            "tags": ["Logout"],
+            "summary": "Logout",
+            "description": ""
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                    "msg": "berhasil logout"
+                }
+              }
+            }
+          }
+      }}
 
     }
   }

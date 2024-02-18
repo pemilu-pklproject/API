@@ -94,19 +94,22 @@ const {
 } = require("../controller/admin");
 
 const { uploadImage } = require('../helper/image-handler');
-const { verifyUser } = require('./middleware')
+const { verifyUser, Logout,  } = require('./middleware')
 
 const BASE_URL = '/si-pemilu/api/v1'
 
 module.exports = (app) =>{
 
+    //logout
+    app.get(`${BASE_URL}/logout`, Logout)
+
     //admin
     app.post(`${BASE_URL}/login/admin`, authLogin)
-    app.post(`${BASE_URL}/admin/add`, insertAdmin)
+    app.post(`${BASE_URL}/admin/add`, verifyUser, insertAdmin)
     app.get(`${BASE_URL}/admin.json`, verifyUser, getAllAdmin)
-    app.get(`${BASE_URL}/admin/:id.json`, getAdminById)
-    app.put(`${BASE_URL}/admin/update/:id`, updateAdmin)
-    app.delete(`${BASE_URL}/admin/delete/:id`, deleteAdmin)
+    app.get(`${BASE_URL}/admin/:id.json`, verifyUser, getAdminById)
+    app.put(`${BASE_URL}/admin/update/:id`, verifyUser, updateAdmin)
+    app.delete(`${BASE_URL}/admin/delete/:id`, verifyUser, deleteAdmin)
 
     //relawan
     app.post(`${BASE_URL}/login/relawan`, RelawanLogin)

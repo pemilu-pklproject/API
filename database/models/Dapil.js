@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Kandidat,{
         foreignKey:'kode_dapil',
         sourceKey: 'kode_dapil',
-        as: 'kandidat-dapil'
+        as: 'kandidat_dapil'
       });
     }
   }

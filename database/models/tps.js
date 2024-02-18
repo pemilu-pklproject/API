@@ -13,12 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Wilayah, {
         foreignKey: 'kode_wilayah',
         targetKey: 'kode',
-        as: 'tps-wilayah'
+        as: 'tps_wilayah'
       });
       this.belongsTo(models.Kandidat, {
         foreignKey: 'id_kandidat',
         targetKey: 'id',
-        as: 'tps-kandidat'
+        as: 'tps_kandidat'
       });
       this.belongsTo(models.Relawan, {
         foreignKey: 'id_saksi',

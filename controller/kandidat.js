@@ -31,7 +31,7 @@ const getKandidatAll = async (req,res) =>{
                 },
                 {
                     model: Dapil,
-                    as: 'kandidat-dapil',
+                    as: 'kandidat_dapil',
                     attributes: ['id','kode_dapil','nama_dapil']
                 },
                 {

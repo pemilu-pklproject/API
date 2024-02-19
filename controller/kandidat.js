@@ -42,7 +42,7 @@ const getKandidatAll = async (req,res) =>{
             ],
             order: [['id', 'ASC']],
             group: ['Kandidat.id'],
-            attributes: ['id','nama','nik','email','jenis_kelamin','partai',]
+            attributes: ['id','nama','nik','no_urut','email','jenis_kelamin','partai',]
         })
         .then((datas)=>{
             res.status=true
@@ -90,7 +90,7 @@ const getKandidatSuara= async (req,res) =>{
             ],
             order: [['id', 'ASC']],
             group: ['Kandidat.id'],
-            attributes: ['id','nama','nik','email','jenis_kelamin','partai',]
+            attributes: ['id','nama','nik','no_urut','email','jenis_kelamin','partai',]
         })
         .then((datas)=>{
             res.status=true

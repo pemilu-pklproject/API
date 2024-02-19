@@ -1,4 +1,4 @@
-const { Kandidat, Calon_jabatan, Wilayah, Dapil, Super_admin } = require("../database/models")
+const { Kandidat, Calon_jabatan, Wilayah, Dapil, Super_admin, Hasil_suara } = require("../database/models")
 const { decrypt, encrypt } = require('../helper/bcrypt');
 const {Op, Sequelize} = require('sequelize')
 //insert kandidat
@@ -41,7 +41,56 @@ const getKandidatAll = async (req,res) =>{
                 }
             ],
             order: [['id', 'ASC']],
-            group: ['Kandidat.id']
+            group: ['Kandidat.id'],
+            attributes: ['id','nama','nik','email','jenis_kelamin','partai',]
+        })
+        .then((datas)=>{
+            res.status=true
+            res.json(datas)
+        })
+        .catch(err =>{
+            console.log(err)
+            res.status=500
+            res.send("server error")
+        })
+}
+
+//get all kandidat dan total (versi inner join)
+const getKandidatSuara= async (req,res) =>{
+    Kandidat
+        .findAll({
+            include:[
+                {
+                    model : Calon_jabatan,
+                    as: 'jbtn',
+                    attributes:['jabatan']
+                },
+                {
+                    model: Hasil_suara,
+                    as: 'kandidat_total',
+                    attributes: [
+                        [Sequelize.literal('(SELECT SUM(total) FROM hasil_suara WHERE hasil_suara.id_kandidat = kandidat.id)'), 'total_suara']
+                    ]
+                },
+                {
+                    model: Wilayah,
+                    as: 'wilayah',
+                    attributes:['nama']
+                },
+                {
+                    model: Dapil,
+                    as: 'kandidat_dapil',
+                    attributes: ['nama_dapil']
+                },
+                {
+                    model: Super_admin,
+                    as: 'admin',
+                    attributes: ['nama']
+                }
+            ],
+            order: [['id', 'ASC']],
+            group: ['Kandidat.id'],
+            attributes: ['id','nama','nik','email','jenis_kelamin','partai',]
         })
         .then((datas)=>{
             res.status=true
@@ -95,7 +144,8 @@ const getKandidatById = async (req, res) => {
                     as: 'admin',
                     attributes: ['nama']
                 }
-            ] 
+            ],
+            attributes: ['id','nama','nik','email','jenis_kelamin','partai',] 
         })
         .then((data) => {
             if(data.length == 0) {
@@ -153,5 +203,6 @@ module.exports = {
     updateKandidat,
     deleteKandidat,
     deletAllKandidat,
-    getKandidatAll
+    getKandidatAll,
+    getKandidatSuara
 }

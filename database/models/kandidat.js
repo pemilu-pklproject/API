@@ -44,6 +44,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id_admin',
         targetKey: 'id',
         as: 'admin'
+      });
+      this.hasMany(models.Hasil_suara, {
+        foreignKey: 'id_kandidat',
+        sourceKey: 'id',
+        as: 'kandidat_total'
       })
     }
     

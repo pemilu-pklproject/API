@@ -618,6 +618,68 @@
         }
       },
 
+      "/si-pemilu/api/v1/kandidat/suara/all.json": {
+        "get": {
+          "tags": ["Kandidat"],
+          "summary": "get all kandidat dan Hasil suara (inner all)",
+          "description": "menampilkan data kandidat",
+          "responses": {
+            "200": {
+              "description": "Sukses",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": 3,
+                    "nama": "Roy",
+                    "nik": "127712192918128090",
+                    "email": "roysinagar@gmail.com",
+                    "password": "$2b$10$ROHENhkk8u81TeyBVy4wwe36iIALdQP0HzuwU0IjXimVvxvMoL4Py",
+                    "jenis_kelamin": "pria",
+                    "partai": "Hanura",
+                    "kode_dapil": "1201",
+                    "no_urut": "03",
+                    "id_jabatan": 2,
+                    "id_admin": 3,
+                    "kode_wilayah": "12",
+                    "jbtn": {
+                        "jabatan": "DPR RI"
+                    },
+                    "kandidat_total": [
+                        {
+                            "total_suara": "27"
+                        }
+                    ],
+                    "wilayah": {
+                        "nama": "SUMATERA UTARA"
+                    },
+                    "kandidat_dapil": {
+                        "nama_dapil": "SUMATERA UTARA I"
+                    },
+                    "admin": {
+                        "nama": "ahmad goprun"
+                    }
+                }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "status": false,
+                    "msg": "data gagal ditemukan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+
       "/si-pemilu/api/v1/data/kandidat.json": {
         "get": {
           "tags": ["Kandidat"],

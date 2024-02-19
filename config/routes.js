@@ -6,6 +6,7 @@ const {
     deleteKandidat,
     deletAllKandidat,
     getKandidatAll,
+    getKandidatSuara,
 } = require("../controller/kandidat")
 
 const { 
@@ -105,11 +106,11 @@ module.exports = (app) =>{
 
     //admin
     app.post(`${BASE_URL}/login/admin`, authLogin)
-    app.post(`${BASE_URL}/admin/add`, verifyUser, insertAdmin)
-    app.get(`${BASE_URL}/admin.json`, verifyUser, getAllAdmin)
-    app.get(`${BASE_URL}/admin/:id.json`, verifyUser, getAdminById)
-    app.put(`${BASE_URL}/admin/update/:id`, verifyUser, updateAdmin)
-    app.delete(`${BASE_URL}/admin/delete/:id`, verifyUser, deleteAdmin)
+    app.post(`${BASE_URL}/admin/add`, insertAdmin)
+    app.get(`${BASE_URL}/admin.json`, getAllAdmin)
+    app.get(`${BASE_URL}/admin/:id.json`, getAdminById)
+    app.put(`${BASE_URL}/admin/update/:id`, updateAdmin)
+    app.delete(`${BASE_URL}/admin/delete/:id`, deleteAdmin)
 
     //relawan
     app.post(`${BASE_URL}/login/relawan`, RelawanLogin)
@@ -128,6 +129,7 @@ module.exports = (app) =>{
     app.post(`${BASE_URL}/kandidat/add`, insertKandidat)
     app.get(`${BASE_URL}/kandidat/:id.json`, getKandidatById)
     app.get(`${BASE_URL}/kandidat.json`, getAllKandidat)
+    app.get(`${BASE_URL}/kandidat/suara/all.json`, getKandidatSuara)
     app.get(`${BASE_URL}/data/kandidat.json`, getKandidatAll)
     app.put(`${BASE_URL}/kandidat/update/:id`, updateKandidat)
     app.delete(`${BASE_URL}/kandidat/delete/:id`, deleteKandidat)

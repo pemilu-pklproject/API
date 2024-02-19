@@ -2,13 +2,14 @@ const jwt = require('jsonwebtoken')
 
 module.exports = {
     verifyUser: (req, res, next) => {
-        console.log(req.cookies)
+        // console.log(req.cookies)
         const authHeader = req.headers['authorization']
         const token = authHeader && authHeader.replace("Bearer ", "")
+        // if (token) console.log(token);
 
-        jwt.verify(token, process.env.ACCESS_TOKEN, (err, decode) => {
+        jwt.verify(token, process.env.ACCESS_TOKEN, (err, decoded) => {
             if (err) return res.status(401).json({msg: "Invalid Token"})
-            // if(decode.role == "user") return res.sendStatus(403)
+            req.user = decoded;
             next()
         })
     },

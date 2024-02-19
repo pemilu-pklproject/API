@@ -20,11 +20,11 @@ const authLogin = async (req, res) => {
                 const { id, email, nama } = data[0];
                 const access_token = jwt.sign({ id, email, nama }, process.env.ACCESS_TOKEN, { expiresIn: '600s' });
     
-                res.cookie('accessToken', access_token, {
-                    httponly: true,
+                res.cookie('access_token', access_token, {
+                    httpOnly: true,
                     maxAge: 24 * 60 * 60 * 1000
                 })
-                return res.json({status: true, user : { id: id, nama: nama }, access_token});
+                return res.json({status: true, user : { id }, access_token});
             });
         })
         .catch(err => {

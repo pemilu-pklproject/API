@@ -145,7 +145,7 @@ const getKandidatById = async (req, res) => {
                     attributes: ['nama']
                 }
             ],
-            attributes: ['id','nama','nik','email','jenis_kelamin','partai',] 
+            attributes: ['id','nama','nik','no_urut','email','jenis_kelamin','partai',] 
         })
         .then((data) => {
             if(data.length == 0) {

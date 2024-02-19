@@ -106,8 +106,8 @@ module.exports = (app) =>{
 
     //admin
     app.post(`${BASE_URL}/login/admin`, authLogin)
-    app.post(`${BASE_URL}/admin/add`, insertAdmin)
-    app.get(`${BASE_URL}/admin.json`, getAllAdmin)
+    app.post(`${BASE_URL}/admin/add`,insertAdmin)
+    app.get(`${BASE_URL}/admin.json`,  getAllAdmin)
     app.get(`${BASE_URL}/admin/:id.json`, getAdminById)
     app.put(`${BASE_URL}/admin/update/:id`, updateAdmin)
     app.delete(`${BASE_URL}/admin/delete/:id`, deleteAdmin)

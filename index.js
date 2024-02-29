@@ -5,11 +5,12 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const routes = require('./config/routes');
 const swaggerUI = require('swagger-ui-express')
-const PORT = process.env.APP_PORT || 5000
+const PORT = process.env.APP_PORT || 8080
 
-app.use(cors({origin: "*"}));
+app.use(cors({ credentials:true, origin: 'http://localhost:3000'}));
 
 app.use(bodyParser.json());
+app.use(express.urlencoded({extended: false}));
 
 routes(app);
 

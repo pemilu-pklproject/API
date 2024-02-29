@@ -95,7 +95,7 @@ const {
 } = require("../controller/admin");
 
 const { uploadImage } = require('../helper/image-handler');
-const { verifyUser, Logout,  } = require('./middleware')
+const { VerifyUser, Logout,  } = require('./middleware')
 
 const BASE_URL = '/si-pemilu/api/v1'
 
@@ -106,8 +106,8 @@ module.exports = (app) =>{
 
     //admin
     app.post(`${BASE_URL}/login/admin`, authLogin)
-    app.post(`${BASE_URL}/admin/add`,insertAdmin)
-    app.get(`${BASE_URL}/admin.json`,  getAllAdmin)
+    app.post(`${BASE_URL}/admin/add`, VerifyUser,insertAdmin)
+    app.get(`${BASE_URL}/admin.json`, VerifyUser, getAllAdmin)
     app.get(`${BASE_URL}/admin/:id.json`, getAdminById)
     app.put(`${BASE_URL}/admin/update/:id`, updateAdmin)
     app.delete(`${BASE_URL}/admin/delete/:id`, deleteAdmin)
